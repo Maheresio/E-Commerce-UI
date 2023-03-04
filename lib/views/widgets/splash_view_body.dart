@@ -21,7 +21,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Image.asset(AssetData.kSplashviewImage),
+      child: Image.asset(AssetData.kSplashviewImage,),
     );
   }
 

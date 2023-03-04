@@ -1,11 +1,11 @@
-import 'package:e_commerce_app/views/pages/home_view.dart';
+import 'package:e_commerce_app/views/pages/auth_view.dart';
 import 'package:e_commerce_app/views/pages/splash_view.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 abstract class AppRoutes {
 
-  static const kHomeViewRoute='/homeView';
+  static const kHomeViewRoute='/authView';
 
 
 
@@ -20,7 +20,7 @@ abstract class AppRoutes {
        GoRoute(
         path: kHomeViewRoute,
         builder: (BuildContext context, GoRouterState state) {
-          return const HomeView();
+          return const AuthView();
         },
       ),
     ],

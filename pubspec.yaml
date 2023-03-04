@@ -13,6 +13,7 @@ dependencies:
     sdk: flutter
   flutter_bloc: ^8.1.2
   flutter_screenutil: ^5.6.1
+  font_awesome_flutter: ^10.4.0
   go_router: ^6.2.0
 
 dev_dependencies:
@@ -25,3 +26,12 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+
+  fonts:
+    - family: Metropolis
+      fonts:
+        - asset: assets/fonts/Metropolis-Black.otf
+        - asset: assets/fonts/Metropolis-Bold.otf
+        - asset: assets/fonts/Metropolis-Medium.otf
+        - asset: assets/fonts/Metropolis-Regular.otf
+        - asset: assets/fonts/Metropolis-SemiBold.otf
