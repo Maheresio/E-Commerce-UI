@@ -22,7 +22,7 @@ abstract class AppColorsLight {
   static const kErrorColor = Color(0xffF01F0E);
   static const kSuccessColor = Color(0xff2AA952);
   static const kSaleColor = Color(0xffDB3022);
-  static const kGreyTextColor = Color(0xffC4C4C4);
+  //static const kGreyTextColor = Color(0xffC4C4C4);
 
  
 }

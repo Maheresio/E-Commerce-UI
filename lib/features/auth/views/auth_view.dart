@@ -1,9 +1,14 @@
-import 'package:e_commerce_app/core/global/themes/app_colors/app_colors_light.dart';
-import 'package:e_commerce_app/core/widgets/custom_elevated_button.dart';
+import '../../../core/utils/app_strings.dart';
+import '../../../core/widgets/custom_elevated_button.dart';
+import '../../../core/widgets/custom_text_button.dart';
+import '../../../core/widgets/custom_text_form_field.dart';
+import '../../../core/widgets/text_action_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../core/utils/enums.dart';
+import '../../../core/widgets/custom_text.dart';
 
 class AuthView extends StatefulWidget {
   const AuthView({super.key});
@@ -21,8 +26,6 @@ var _authType = AuthFormType.login;
 class _AuthViewState extends State<AuthView> {
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
@@ -30,279 +33,114 @@ class _AuthViewState extends State<AuthView> {
           key: _formKey,
           child: Padding(
             padding: EdgeInsetsDirectional.only(
-              start: screenWidth * .04,
-              end: screenWidth * .04,
-              top: screenHeight * .05,
+              start: 14.w,
+              end: 14.w,
+              top: 80.h,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  _authType == AuthFormType.login ? 'Login' : 'Sign up',
-                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                        color: AppColorsLight.kBlackColor,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  _authType == AuthFormType.login
+                      ? AppStrings.login
+                      : AppStrings.signup,
+                  style: Theme.of(context).textTheme.headlineLarge,
                 ),
                 SizedBox(
-                  height: screenHeight * .08,
+                  height: 73.h,
                 ),
                 if (_authType == AuthFormType.register)
-                  Material(
-                    elevation: 2,
-                    child: Container(
-                      height: screenHeight * .08,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                      child: LayoutBuilder(builder: (context, constraints) {
-                        return Center(
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                                top: constraints.maxHeight * .25),
-                            child: TextFormField(
-                              controller: _nameController,
-                              validator: (val) => val!.isEmpty
-                                  ? 'enter your name, please'
-                                  : null,
-                              enableInteractiveSelection: true,
-                              keyboardType: TextInputType.name,
-                              textInputAction: TextInputAction.next,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleMedium
-                                  ?.copyWith(fontWeight: FontWeight.w500),
-                              decoration: InputDecoration(
-                                suffix: const Icon(
-                                  Icons.check,
-                                  color: AppColorsLight.kSuccessColor,
-                                ),
-                                border: const OutlineInputBorder(
-                                    borderSide: BorderSide.none),
-                                floatingLabelBehavior:
-                                    FloatingLabelBehavior.always,
-                                label: const Text('Name'),
-                                labelStyle: Theme.of(context)
-                                    .textTheme
-                                    .titleMedium
-                                    ?.copyWith(
-                                      color: AppColorsLight.kGreyTextColor,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                                hintText: 'Enter your Name',
-                                hintStyle: Theme.of(context)
-                                    .textTheme
-                                    .titleMedium
-                                    ?.copyWith(
-                                      color: AppColorsLight.kGreyTextColor,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                              ),
-                            ),
-                          ),
-                        );
-                      }),
-                    ),
+                  CustomTextFormField(
+                    controller: _nameController,
+                    hintText: AppStrings.enterYourName,
+                    label: AppStrings.name,
+                    textInputAction: TextInputAction.next,
+                    textInputType: TextInputType.name,
+                    validator: (val) {
+                      return null;
+                    },
                   ),
                 SizedBox(
-                  height: screenHeight * .015,
+                  height: 8.h,
                 ),
-                Material(
-                  elevation: 2,
-                  child: Container(
-                    height: screenHeight * .08,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(4),
-                    ),
-                    child: LayoutBuilder(builder: (context, constraints) {
-                      return Center(
-                        child: Padding(
-                          padding:
-                              EdgeInsets.only(top: constraints.maxHeight * .25),
-                          child: TextFormField(
-                            controller: _emailController,
-                            validator: (val) => val!.isEmpty
-                                ? 'enter your email, please'
-                                : null,
-                            enableInteractiveSelection: true,
-                            keyboardType: TextInputType.emailAddress,
-                            textInputAction: TextInputAction.next,
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleMedium
-                                ?.copyWith(fontWeight: FontWeight.w500),
-                            decoration: InputDecoration(
-                              suffix: const Icon(
-                                Icons.check,
-                                color: AppColorsLight.kSuccessColor,
-                              ),
-                              border: const OutlineInputBorder(
-                                  borderSide: BorderSide.none),
-                              floatingLabelBehavior:
-                                  FloatingLabelBehavior.always,
-                              label: const Text('Email'),
-                              labelStyle: Theme.of(context)
-                                  .textTheme
-                                  .titleMedium
-                                  ?.copyWith(
-                                    color: AppColorsLight.kGreyTextColor,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                              hintText: 'Enter your email',
-                              hintStyle: Theme.of(context)
-                                  .textTheme
-                                  .titleMedium
-                                  ?.copyWith(
-                                    color: AppColorsLight.kGreyTextColor,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                            ),
-                          ),
-                        ),
-                      );
-                    }),
-                  ),
+                CustomTextFormField(
+                  controller: _emailController,
+                  label: AppStrings.email,
+                  hintText: AppStrings.enterYourEmail,
+                  validator: (val) =>
+                      val!.isEmpty ? 'enter your email, please' : null,
+                  textInputType: TextInputType.emailAddress,
+                  textInputAction: TextInputAction.next,
                 ),
                 SizedBox(
-                  height: screenHeight * .015,
+                  height: 8.h,
                 ),
-                Material(
-                  elevation: 2,
-                  child: Container(
-                    height: screenHeight * .08,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(4),
-                    ),
-                    child: Center(
-                      child: TextFormField(
-                        controller: _passwordController,
-                        validator: (val) =>
-                            val!.isEmpty ? 'enter your password, please' : null,
-                        enableInteractiveSelection: true,
-                        obscureText: true,
-                        obscuringCharacter: '*',
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleMedium
-                            ?.copyWith(fontWeight: FontWeight.w500),
-                        decoration: InputDecoration(
-                          border: const OutlineInputBorder(
-                              borderSide: BorderSide.none),
-                          hintText: 'Password',
-                          hintStyle: Theme.of(context)
-                              .textTheme
-                              .titleMedium
-                              ?.copyWith(
-                                  color: AppColorsLight.kGreyTextColor,
-                                  fontWeight: FontWeight.w500),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: screenHeight * .02,
+                CustomTextFormField(
+                  controller: _passwordController,
+                  label: AppStrings.password,
+                  hintText: AppStrings.enterYourPassword,
+                  validator: (val) =>
+                      val!.isEmpty ? 'enter your password, please' : null,
+                  obscureText: true,
+                  textInputAction: TextInputAction.done,
+                  textInputType: TextInputType.visiblePassword,
                 ),
                 if (_authType == AuthFormType.login)
-                  Align(
-                    alignment: AlignmentDirectional.topEnd,
-                    child: InkWell(
-                      onTap: () {},
-                      child: Text(
-                        'Forgot your password?',
-                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                              color: AppColorsLight.kBlackColor,
-                            ),
-                      ),
-                    ),
-                  ),
+                  CustomTextButton(
+                      text: AppStrings.forgotPassword, onPressed: () {}),
                 SizedBox(
-                  height: screenHeight * .05,
+                  height: _authType == AuthFormType.login ? 20.h : 40.h,
                 ),
                 CustomElevatedButton(
                   formKey: _formKey,
-                  text: _authType == AuthFormType.login ? 'LOGIN' : 'SIGNUP',
+                  text: _authType == AuthFormType.login
+                      ? AppStrings.login.toUpperCase()
+                      : AppStrings.signup.toUpperCase(),
+                  onPressed: () {},
                 ),
-                SizedBox(
-                  height: screenHeight * .02,
-                ),
-                Align(
-                  alignment: AlignmentDirectional.topEnd,
-                  child: InkWell(
-                    onTap: () {
-                      setState(() {
-                        if (_authType == AuthFormType.login) {
-                          _authType = AuthFormType.register;
-                        } else {
-                          _authType = AuthFormType.login;
-                        }
-                      });
-                    },
-                    child: Text(
-                      _authType == AuthFormType.login
-                          ? 'Don\'t have an account? Register'
-                          : 'Have an account? Login',
-                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            color: AppColorsLight.kBlackColor,
-                          ),
-                    ),
-                  ),
+                CustomTextButton(
+                  text: _authType == AuthFormType.login
+                      ? AppStrings.dontHaveAccount
+                      : AppStrings.haveAccount,
+                  onPressed: () {
+                    setState(() {
+                      if (_authType == AuthFormType.login) {
+                        _authType = AuthFormType.register;
+                      } else {
+                        _authType = AuthFormType.login;
+                      }
+                    });
+                  },
                 ),
                 const Spacer(),
                 Center(
-                  child: Text(
-                    _authType == AuthFormType.login
-                        ? 'Or login with social account'
-                        : 'Or sign up with social account',
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          color: AppColorsLight.kBlackColor,
-                        ),
+                  child: CustomText(
+                    text: _authType == AuthFormType.login
+                        ? AppStrings.loginWithSocialAccount
+                        : AppStrings.signupWithSocialAccount,
                   ),
                 ),
                 SizedBox(
-                  height: screenHeight * .02,
+                  height: 12.h,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Material(
-                      elevation: 15,
-                      borderRadius: BorderRadius.circular(24),
-                      child: Container(
-                        height: screenHeight * .08,
-                        width: screenWidth * .22,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(24),
-                          color: Colors.white,
-                        ),
-                        child: Icon(FontAwesomeIcons.google,
-                            color: AppColorsLight.kPrimaryColor),
-                      ),
+                    TextActionButton(
+                      icon: FontAwesomeIcons.google,
+                      onPressed: () {},
                     ),
                     SizedBox(
-                      width: screenWidth * .05,
+                      width: 16.w,
                     ),
-                    Material(
-                      elevation: 15,
-                      borderRadius: BorderRadius.circular(24),
-                      child: Container(
-                        height: screenHeight * .08,
-                        width: screenWidth * .22,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(24),
-                          color: Colors.white,
-                        ),
-                        child: Icon(FontAwesomeIcons.squareFacebook,
-                            color: AppColorsLight.kPrimaryColor),
-                      ),
-                    ),
+                    TextActionButton(
+                      icon: FontAwesomeIcons.squareFacebook,
+                      onPressed: () {},
+                    )
                   ],
                 ),
                 SizedBox(
-                  height: screenHeight * .05,
+                  height: 57.h,
                 ),
               ],
             ),
