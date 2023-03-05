@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'utils/app_colors.dart';
-import 'utils/app_routes.dart';
+import 'core/global/themes/app_colors/app_colors_light.dart';
+import 'core/global/themes/themes_data/theme_data_light.dart';
+import 'core/utils/app_routes.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
-      statusBarColor: AppColors.kBackgroundColor,
-      statusBarIconBrightness: Brightness.dark
-    ),
+        statusBarColor: AppColorsLight.kBackgroundColor,
+        statusBarIconBrightness: Brightness.dark),
   );
   runApp(const HomePage());
 }
@@ -19,14 +20,17 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: AppRoutes.router,
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: AppColors.kPrimaryColor,
-        fontFamily: 'Metropolis',
-        scaffoldBackgroundColor: AppColors.kBackgroundColor,
-      ),
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context,_) {
+        return MaterialApp.router(
+          routerConfig: AppRoutes.router,
+          debugShowCheckedModeBanner: false,
+          theme: getThemeDataLight(),
+        );
+      }
     );
   }
 }

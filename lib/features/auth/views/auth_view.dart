@@ -1,8 +1,8 @@
-import 'package:e_commerce_app/utils/app_colors.dart';
+import 'package:e_commerce_app/core/global/themes/app_colors/app_colors_light.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../utils/enums.dart';
+import '../../../core/utils/enums.dart';
 
 class AuthView extends StatefulWidget {
   const AuthView({super.key});
@@ -39,7 +39,7 @@ class _AuthViewState extends State<AuthView> {
                 Text(
                   _authType == AuthFormType.login ? 'Login' : 'Sign up',
                   style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                        color: AppColors.kBlackColor,
+                        color: AppColorsLight.kBlackColor,
                         fontWeight: FontWeight.bold,
                       ),
                 ),
@@ -48,7 +48,7 @@ class _AuthViewState extends State<AuthView> {
                 ),
                 if (_authType == AuthFormType.register)
                   Material(
-                    elevation: .2,
+                    elevation: 2,
                     child: Container(
                       height: screenHeight * .08,
                       decoration: BoxDecoration(
@@ -62,6 +62,9 @@ class _AuthViewState extends State<AuthView> {
                                 top: constraints.maxHeight * .25),
                             child: TextFormField(
                               controller: _nameController,
+                               validator: (val) => val!.isEmpty
+                                ? 'enter your name, please'
+                                : null,
                               enableInteractiveSelection: true,
                               keyboardType: TextInputType.name,
                               textInputAction: TextInputAction.next,
@@ -72,7 +75,7 @@ class _AuthViewState extends State<AuthView> {
                               decoration: InputDecoration(
                                 suffix: const Icon(
                                   Icons.check,
-                                  color: AppColors.kSuccessColor,
+                                  color: AppColorsLight.kSuccessColor,
                                 ),
                                 border: const OutlineInputBorder(
                                     borderSide: BorderSide.none),
@@ -83,7 +86,7 @@ class _AuthViewState extends State<AuthView> {
                                     .textTheme
                                     .titleMedium
                                     ?.copyWith(
-                                      color: AppColors.kGreyTextColor,
+                                      color: AppColorsLight.kGreyTextColor,
                                       fontWeight: FontWeight.normal,
                                     ),
                                 hintText: 'Enter your Name',
@@ -91,7 +94,7 @@ class _AuthViewState extends State<AuthView> {
                                     .textTheme
                                     .titleMedium
                                     ?.copyWith(
-                                      color: AppColors.kGreyTextColor,
+                                      color: AppColorsLight.kGreyTextColor,
                                       fontWeight: FontWeight.w500,
                                     ),
                               ),
@@ -105,7 +108,7 @@ class _AuthViewState extends State<AuthView> {
                   height: screenHeight * .015,
                 ),
                 Material(
-                  elevation: .2,
+                  elevation: 2,
                   child: Container(
                     height: screenHeight * .08,
                     decoration: BoxDecoration(
@@ -119,6 +122,9 @@ class _AuthViewState extends State<AuthView> {
                               EdgeInsets.only(top: constraints.maxHeight * .25),
                           child: TextFormField(
                             controller: _emailController,
+                            validator: (val) => val!.isEmpty
+                                ? 'enter your email, please'
+                                : null,
                             enableInteractiveSelection: true,
                             keyboardType: TextInputType.emailAddress,
                             textInputAction: TextInputAction.next,
@@ -129,7 +135,7 @@ class _AuthViewState extends State<AuthView> {
                             decoration: InputDecoration(
                               suffix: const Icon(
                                 Icons.check,
-                                color: AppColors.kSuccessColor,
+                                color: AppColorsLight.kSuccessColor,
                               ),
                               border: const OutlineInputBorder(
                                   borderSide: BorderSide.none),
@@ -140,7 +146,7 @@ class _AuthViewState extends State<AuthView> {
                                   .textTheme
                                   .titleMedium
                                   ?.copyWith(
-                                    color: AppColors.kGreyTextColor,
+                                    color: AppColorsLight.kGreyTextColor,
                                     fontWeight: FontWeight.normal,
                                   ),
                               hintText: 'Enter your email',
@@ -148,7 +154,7 @@ class _AuthViewState extends State<AuthView> {
                                   .textTheme
                                   .titleMedium
                                   ?.copyWith(
-                                    color: AppColors.kGreyTextColor,
+                                    color: AppColorsLight.kGreyTextColor,
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
@@ -162,7 +168,7 @@ class _AuthViewState extends State<AuthView> {
                   height: screenHeight * .015,
                 ),
                 Material(
-                  elevation: .2,
+                  elevation: 2,
                   child: Container(
                     height: screenHeight * .08,
                     decoration: BoxDecoration(
@@ -172,6 +178,9 @@ class _AuthViewState extends State<AuthView> {
                     child: Center(
                       child: TextFormField(
                         controller: _passwordController,
+                         validator: (val) => val!.isEmpty
+                                ? 'enter your password, please'
+                                : null,
                         enableInteractiveSelection: true,
                         obscureText: true,
                         obscuringCharacter: '*',
@@ -187,7 +196,7 @@ class _AuthViewState extends State<AuthView> {
                               .textTheme
                               .titleMedium
                               ?.copyWith(
-                                  color: AppColors.kGreyTextColor,
+                                  color: AppColorsLight.kGreyTextColor,
                                   fontWeight: FontWeight.w500),
                         ),
                       ),
@@ -205,7 +214,7 @@ class _AuthViewState extends State<AuthView> {
                       child: Text(
                         'Forgot your password?',
                         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                              color: AppColors.kBlackColor,
+                              color: AppColorsLight.kBlackColor,
                             ),
                       ),
                     ),
@@ -217,15 +226,12 @@ class _AuthViewState extends State<AuthView> {
                   width: double.infinity,
                   height: screenHeight * .07,
                   child: ElevatedButton(
-                    style: ButtonStyle(
-                      elevation: MaterialStateProperty.all(5),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                        ),
-                      ),
-                    ),
-                    onPressed: () {},
+                    
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        print('authenticate');
+                      }
+                    },
                     child: Text(
                         _authType == AuthFormType.login ? 'LOGIN' : 'SIGN UP'),
                   ),
@@ -250,7 +256,7 @@ class _AuthViewState extends State<AuthView> {
                           ? 'Don\'t have an account? Register'
                           : 'Have an account? Login',
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            color: AppColors.kBlackColor,
+                            color: AppColorsLight.kBlackColor,
                           ),
                     ),
                   ),
@@ -262,7 +268,7 @@ class _AuthViewState extends State<AuthView> {
                         ? 'Or login with social account'
                         : 'Or sign up with social account',
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          color: AppColors.kBlackColor,
+                          color: AppColorsLight.kBlackColor,
                         ),
                   ),
                 ),
@@ -283,7 +289,7 @@ class _AuthViewState extends State<AuthView> {
                           color: Colors.white,
                         ),
                         child: Icon(FontAwesomeIcons.google,
-                            color: AppColors.kPrimaryColor),
+                            color: AppColorsLight.kPrimaryColor),
                       ),
                     ),
                     SizedBox(
@@ -300,7 +306,7 @@ class _AuthViewState extends State<AuthView> {
                           color: Colors.white,
                         ),
                         child: Icon(FontAwesomeIcons.squareFacebook,
-                            color: AppColors.kPrimaryColor),
+                            color: AppColorsLight.kPrimaryColor),
                       ),
                     ),
                   ],
