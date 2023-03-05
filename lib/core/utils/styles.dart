@@ -1,5 +1,6 @@
-import '../global/themes/app_colors/app_colors_light.dart';
 import 'package:flutter/material.dart';
+
+import '../global/themes/app_colors/app_colors_light.dart';
 
 abstract class Styles {
   static const textStyles11 = TextStyle(
