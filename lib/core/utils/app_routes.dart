@@ -4,12 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 abstract class AppRoutes {
+  static const kHomeViewRoute = '/authView';
 
-  static const kHomeViewRoute='/authView';
-
-
-
- static final GoRouter router = GoRouter(
+  static final GoRouter router = GoRouter(
     routes: <RouteBase>[
       GoRoute(
         path: '/',
@@ -17,7 +14,7 @@ abstract class AppRoutes {
           return const SplashView();
         },
       ),
-       GoRoute(
+      GoRoute(
         path: kHomeViewRoute,
         builder: (BuildContext context, GoRouterState state) {
           return const AuthView();
