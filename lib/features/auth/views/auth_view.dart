@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/core/global/themes/app_colors/app_colors_light.dart';
+import 'package:e_commerce_app/core/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -62,9 +63,9 @@ class _AuthViewState extends State<AuthView> {
                                 top: constraints.maxHeight * .25),
                             child: TextFormField(
                               controller: _nameController,
-                               validator: (val) => val!.isEmpty
-                                ? 'enter your name, please'
-                                : null,
+                              validator: (val) => val!.isEmpty
+                                  ? 'enter your name, please'
+                                  : null,
                               enableInteractiveSelection: true,
                               keyboardType: TextInputType.name,
                               textInputAction: TextInputAction.next,
@@ -178,9 +179,8 @@ class _AuthViewState extends State<AuthView> {
                     child: Center(
                       child: TextFormField(
                         controller: _passwordController,
-                         validator: (val) => val!.isEmpty
-                                ? 'enter your password, please'
-                                : null,
+                        validator: (val) =>
+                            val!.isEmpty ? 'enter your password, please' : null,
                         enableInteractiveSelection: true,
                         obscureText: true,
                         obscuringCharacter: '*',
@@ -222,19 +222,9 @@ class _AuthViewState extends State<AuthView> {
                 SizedBox(
                   height: screenHeight * .05,
                 ),
-                SizedBox(
-                  width: double.infinity,
-                  height: screenHeight * .07,
-                  child: ElevatedButton(
-                    
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        print('authenticate');
-                      }
-                    },
-                    child: Text(
-                        _authType == AuthFormType.login ? 'LOGIN' : 'SIGN UP'),
-                  ),
+                CustomElevatedButton(
+                  formKey: _formKey,
+                  text: _authType == AuthFormType.login ? 'LOGIN' : 'SIGNUP',
                 ),
                 SizedBox(
                   height: screenHeight * .02,
