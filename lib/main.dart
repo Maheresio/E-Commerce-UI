@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'core/global/themes/app_colors/app_colors_light.dart';
 import 'core/global/themes/themes_data/theme_data_light.dart';
 import 'core/utils/app_routes.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
-        statusBarColor: AppColorsLight.kBackgroundColor,
+        statusBarColor: Colors.transparent,
         statusBarIconBrightness: Brightness.dark),
   );
   runApp(const HomePage());

@@ -29,7 +29,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   void navToHome() {
     Future.delayed(
       const Duration(seconds: 5),
-      () => GoRouter.of(context).pushReplacement(AppRoutes.kHomeViewRoute),
+      () => GoRouter.of(context).pushReplacement(AppRoutes.kAuthViewRoute),
     );
   }
 }

@@ -11,8 +11,10 @@ ThemeData getThemeDataLight(BuildContext context) => ThemeData(
       //text theme
 
       textTheme: const TextTheme(
+        titleLarge: Styles.textStyles16,
         bodyMedium: Styles.textStyles14,
         headlineLarge: Styles.textStyles34,
+        headlineMedium: Styles.textStyles34,
       ),
 
       //text form field
