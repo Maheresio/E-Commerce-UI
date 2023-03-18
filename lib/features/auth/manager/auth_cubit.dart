@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:e_commerce_app/core/error/firebase_exceptions.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:e_commerce_app/features/auth/repos/auth_repo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -22,7 +23,7 @@ class AuthCubit extends Cubit<AuthState> {
   String name;
   AuthFormType authFormType;
 
-  void _copyWith({
+  void copyWith({
     String? email,
     String? password,
     String? name,
@@ -34,11 +35,11 @@ class AuthCubit extends Cubit<AuthState> {
     this.authFormType = authFormType ?? this.authFormType;
   }
 
-  void updateName(String email) => _copyWith(email: email);
-  void updateEmail(String email) => _copyWith(email: email);
-  void updatePassword(String password) => _copyWith(password: password);
+  void updateName(String email) => copyWith(email: email);
+  void updateEmail(String email) => copyWith(email: email);
+  void updatePassword(String password) => copyWith(password: password);
   void updateAuthFormType(AuthFormType authFormType) =>
-      _copyWith(authFormType: authFormType);
+      copyWith(authFormType: authFormType);
 
   void toggle() => authFormType == AuthFormType.login
       ? updateAuthFormType(AuthFormType.register)
@@ -56,8 +57,10 @@ class AuthCubit extends Cubit<AuthState> {
       }
       emit(AuthSuccess());
     } on FirebaseAuthException catch (error) {
-      emit(AuthFailure(error.message!));
-      rethrow;
+      String errorMsg = getExceptionMsg(error);
+      emit(AuthFailure(errorMsg));
+    } catch (error) {
+      emit(AuthFailure(error.toString()));
     }
   }
 
@@ -68,7 +71,6 @@ class AuthCubit extends Cubit<AuthState> {
       emit(AuthSuccess());
     } on FirebaseAuthException catch (error) {
       emit(AuthFailure(error.message!));
-      rethrow;
     }
   }
 }

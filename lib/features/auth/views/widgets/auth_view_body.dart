@@ -115,6 +115,7 @@ class _AuthViewBodyState extends State<AuthViewBody> {
                     : AppStrings.haveAccount,
                 onPressed: () {
                   setState(() {
+                    authCubit.copyWith(email: '',password: '',name: '');
                     _formKey.currentState!.reset();
                     FocusScope.of(context).unfocus();
                     authCubit.toggle();
