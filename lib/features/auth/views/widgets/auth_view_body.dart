@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/core/global/themes/app_colors/app_colors_light.dart';
+import 'package:e_commerce_app/core/helpers/custom_snack_bar.dart';
 import 'package:e_commerce_app/core/utils/app_routes.dart';
 import 'package:e_commerce_app/features/auth/manager/auth_cubit.dart';
 import 'package:e_commerce_app/features/auth/views/widgets/featured_text_form_fields.dart';
@@ -92,6 +93,7 @@ class _AuthViewBodyState extends State<AuthViewBody> {
                         ? AppStrings.login.toUpperCase()
                         : AppStrings.signup.toUpperCase(),
                     onPressed: () async {
+                      FocusScope.of(context).unfocus();
                       if (_formKey.currentState!.validate()) {
                         await authCubit.submit();
                       }
@@ -103,8 +105,7 @@ class _AuthViewBodyState extends State<AuthViewBody> {
                     GoRouter.of(context)
                         .pushReplacement(AppRoutes.kNavBarViewRoute);
                   } else if (state is AuthFailure) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('fuck you')));
+                    customSnackBar(context, state.errorMsg);
                   }
                 },
               ),
@@ -115,6 +116,7 @@ class _AuthViewBodyState extends State<AuthViewBody> {
                 onPressed: () {
                   setState(() {
                     _formKey.currentState!.reset();
+                    FocusScope.of(context).unfocus();
                     authCubit.toggle();
                   });
                 },

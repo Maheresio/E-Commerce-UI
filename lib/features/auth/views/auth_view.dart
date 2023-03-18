@@ -7,9 +7,12 @@ class AuthView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-       resizeToAvoidBottomInset: false,
-      body: AuthViewBody(),
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: const Scaffold(
+         resizeToAvoidBottomInset: false,
+        body: AuthViewBody(),
+      ),
     );
   }
 }

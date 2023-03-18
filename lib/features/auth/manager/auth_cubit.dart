@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:e_commerce_app/features/auth/repos/auth_repo.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 part 'auth_state.dart';
@@ -54,9 +55,8 @@ class AuthCubit extends Cubit<AuthState> {
         await authRepo.signUpWithEmailAndPassword(email, password);
       }
       emit(AuthSuccess());
-    } catch (e) {
-      emit(AuthFailure());
-      debugPrint('dkfdkjf '+e.toString());
+    } on FirebaseAuthException catch (error) {
+      emit(AuthFailure(error.message!));
       rethrow;
     }
   }
@@ -66,9 +66,8 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       await authRepo.logout();
       emit(AuthSuccess());
-    } catch (e) {
-      emit(AuthFailure());
-      debugPrint(e.toString());
+    } on FirebaseAuthException catch (error) {
+      emit(AuthFailure(error.message!));
       rethrow;
     }
   }
