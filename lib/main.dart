@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/core/utils/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,11 +7,12 @@ import 'firebase_options.dart';
 import 'core/global/themes/themes_data/theme_data_light.dart';
 import 'core/utils/app_routes.dart';
 
-void main() async{
-WidgetsFlutterBinding.ensureInitialized();
-await Firebase.initializeApp(
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-);
+  );
+  setupServiceLocator();
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
@@ -25,16 +27,15 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(375, 812),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder: (context,_) {
-        return MaterialApp.router(
-          routerConfig: AppRoutes.router,
-          debugShowCheckedModeBanner: false,
-          theme: getThemeDataLight(context),
-        );
-      }
-    );
+        designSize: const Size(375, 812),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, _) {
+          return MaterialApp.router(
+            routerConfig: AppRoutes.router,
+            debugShowCheckedModeBanner: false,
+            theme: getThemeDataLight(context),
+          );
+        });
   }
 }

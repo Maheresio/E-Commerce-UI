@@ -1,4 +1,9 @@
 import 'package:e_commerce_app/bottom_nav_bar.dart';
+import 'package:e_commerce_app/core/utils/service_locator.dart';
+import 'package:e_commerce_app/features/auth/manager/auth_cubit.dart';
+import 'package:e_commerce_app/features/auth/repos/auth_repo.dart';
+import 'package:e_commerce_app/features/auth/repos/auth_repo_imp.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../features/auth/views/auth_view.dart';
 import '../../features/splash/view/splash_view.dart';
@@ -20,7 +25,10 @@ abstract class AppRoutes {
       GoRoute(
         path: kAuthViewRoute,
         builder: (BuildContext context, GoRouterState state) {
-          return const AuthView();
+          return BlocProvider(
+            create: (context) => AuthCubit(authRepo: getIt.get<AuthRepoImp>()),
+            child: const AuthView(),
+          );
         },
       ),
       GoRoute(
