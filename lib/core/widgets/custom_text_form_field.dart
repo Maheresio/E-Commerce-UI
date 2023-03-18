@@ -37,9 +37,10 @@ class CustomTextFormField extends StatelessWidget {
         obscuringCharacter: obscuringCharacter,
       
         decoration: InputDecoration(
-          filled: true,
-          fillColor: Colors.white,
-          border: InputBorder.none,
+          //  filled: true,
+          //  fillColor: Colors.white,
+          
+          // border: InputBorder.none,
           floatingLabelBehavior: floatingLabelBehavior,
           label: Text(label),
           hintText: hintText,

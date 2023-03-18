@@ -30,46 +30,45 @@ class HomeViewBody extends StatelessWidget {
           ],
         ),
         SizedBox(
-          height: 50.h,
+          height: 30.h,
         ),
         Padding(
           padding: EdgeInsetsDirectional.only(start: 16.w),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('Sale',
-                          style: Theme.of(context).textTheme.headlineMedium),
-                      SizedBox(
-                        height: 4.h,
-                      ),
-                      Text(
-                        'Super summer sale',
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                              color: AppColorsLight.kGreyColor,
-                            ),
-                      ),
-                    ],
-                  ),
-                  const Spacer(),
+                  Text('Sale',
+                      style: Theme.of(context).textTheme.headlineMedium),
                   Padding(
                     padding: EdgeInsetsDirectional.only(
-                      end: 14.w,
+                      end: 10.w,
                     ),
-                    child: Text(
-                      'View all',
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: AppColorsLight.kBlackColor,
-                          ),
+                    child: TextButton(
+                      onPressed: (){},
+                      child: Text(
+                        'View all',
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                              color: AppColorsLight.kBlackColor,
+                            ),
+                      ),
                     ),
                   )
                 ],
               ),
               SizedBox(
-                height: 46.h,
+                height: 4.h,
+              ),
+              Text(
+                'Super summer sale',
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: AppColorsLight.kGreyColor,
+                    ),
+              ),
+              SizedBox(
+                height: 22.h,
               ),
               const ProductsListView()
             ],
