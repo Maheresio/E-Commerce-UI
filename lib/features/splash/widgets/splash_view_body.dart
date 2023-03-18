@@ -1,4 +1,6 @@
+import 'package:e_commerce_app/features/auth/repos/auth_repo_imp.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/utils/app_routes.dart';
@@ -15,21 +17,32 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   @override
   void initState() {
     super.initState();
-
     navToHome();
   }
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Image.asset(AssetData.kSplashviewImage,),
+      child: Image.asset(
+        AssetData.kSplashviewImage,
+      ),
     );
   }
 
   void navToHome() {
-    Future.delayed(
-      const Duration(seconds: 5),
-      () => GoRouter.of(context).pushReplacement(AppRoutes.kAuthViewRoute),
-    );
+    final repo = GetIt.I.get<AuthRepoImp>();
+    repo.authStateChanges().listen((event) {
+      event != null
+          ? Future.delayed(
+              const Duration(seconds: 5),
+              () => GoRouter.of(context)
+                  .pushReplacement(AppRoutes.kNavBarViewRoute),
+            )
+          : Future.delayed(
+              const Duration(seconds: 5),
+              () => GoRouter.of(context)
+                  .pushReplacement(AppRoutes.kAuthViewRoute),
+            );
+    });
   }
 }
