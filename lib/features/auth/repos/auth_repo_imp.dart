@@ -13,7 +13,7 @@ class AuthRepoImp implements AuthRepo {
   @override
   Future<User?> loginWithEmailAndPassword(String email, String password) async {
     final user = await _firebaseAuth.signInWithEmailAndPassword(
-        email: email, password: password);
+        email: email.trim(), password: password);
     return user.user;
   }
 
@@ -21,7 +21,7 @@ class AuthRepoImp implements AuthRepo {
   Future<User?> signUpWithEmailAndPassword(
       String email, String password) async {
     final user = await _firebaseAuth.createUserWithEmailAndPassword(
-        email: email, password: password);
+        email: email.trim(), password: password);
     return user.user;
   }
 

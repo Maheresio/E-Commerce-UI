@@ -4,9 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton(
-      {super.key, required this.formKey, required this.text, required this.onPressed});
+      {super.key,required this.text, required this.onPressed});
 
-  final GlobalKey<FormState> formKey;
   final String text;
   final VoidCallback? onPressed;
 

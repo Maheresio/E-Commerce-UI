@@ -21,7 +21,7 @@ class AuthCubit extends Cubit<AuthState> {
   String name;
   AuthFormType authFormType;
 
-  void copyWith({
+  void _copyWith({
     String? email,
     String? password,
     String? name,
@@ -33,13 +33,17 @@ class AuthCubit extends Cubit<AuthState> {
     this.authFormType = authFormType ?? this.authFormType;
   }
 
-  void updateName(String email) => copyWith(email: email);
-  void updateEmail(String email) => copyWith(email: email);
-  void updatePassword(String password) => copyWith(password: password);
+  void updateName(String email) => _copyWith(email: email);
+  void updateEmail(String email) => _copyWith(email: email);
+  void updatePassword(String password) => _copyWith(password: password);
   void updateAuthFormType(AuthFormType authFormType) =>
-      copyWith(authFormType: authFormType);
+      _copyWith(authFormType: authFormType);
 
-  //methods
+  void toggle() => authFormType == AuthFormType.login
+      ? updateAuthFormType(AuthFormType.register)
+      : updateAuthFormType(AuthFormType.login);
+
+  //firebase methods
 
   Future<void> submit() async {
     emit(AuthLoading());
@@ -52,6 +56,7 @@ class AuthCubit extends Cubit<AuthState> {
       emit(AuthSuccess());
     } catch (e) {
       emit(AuthFailure());
+      debugPrint('dkfdkjf '+e.toString());
       rethrow;
     }
   }
@@ -64,6 +69,7 @@ class AuthCubit extends Cubit<AuthState> {
     } catch (e) {
       emit(AuthFailure());
       debugPrint(e.toString());
+      rethrow;
     }
   }
 }

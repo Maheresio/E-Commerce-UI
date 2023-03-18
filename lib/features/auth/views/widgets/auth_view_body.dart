@@ -1,15 +1,19 @@
+import 'package:e_commerce_app/core/global/themes/app_colors/app_colors_light.dart';
 import 'package:e_commerce_app/core/utils/app_routes.dart';
+import 'package:e_commerce_app/features/auth/manager/auth_cubit.dart';
+import 'package:e_commerce_app/features/auth/views/widgets/featured_text_form_fields.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/enums.dart';
 import '../../../../core/widgets/custom_elevated_button.dart';
 import '../../../../core/widgets/custom_text.dart';
 import '../../../../core/widgets/custom_text_button.dart';
-import '../../../../core/widgets/custom_text_form_field.dart';
 import '../../../../core/widgets/text_action_button.dart';
 
 class AuthViewBody extends StatefulWidget {
@@ -19,15 +23,24 @@ class AuthViewBody extends StatefulWidget {
   State<AuthViewBody> createState() => _AuthViewBodyState();
 }
 
-final _formKey = GlobalKey<FormState>();
-final _emailController = TextEditingController();
-final _passwordController = TextEditingController();
-final _nameController = TextEditingController();
-var _authType = AuthFormType.login;
-
 class _AuthViewBodyState extends State<AuthViewBody> {
+  late final GlobalKey<FormState> _formKey;
+  late final TextEditingController _emailController;
+  late final TextEditingController _passwordController;
+  late final TextEditingController _nameController;
+
+  @override
+  void initState() {
+    super.initState();
+    _formKey = GlobalKey<FormState>();
+    _emailController = TextEditingController();
+    _passwordController = TextEditingController();
+    _nameController = TextEditingController();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final authCubit = BlocProvider.of<AuthCubit>(context);
     return SafeArea(
       child: Form(
         key: _formKey,
@@ -41,7 +54,7 @@ class _AuthViewBodyState extends State<AuthViewBody> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                _authType == AuthFormType.login
+                authCubit.authFormType == AuthFormType.login
                     ? AppStrings.login
                     : AppStrings.signup,
                 style: Theme.of(context).textTheme.headlineLarge,
@@ -49,76 +62,67 @@ class _AuthViewBodyState extends State<AuthViewBody> {
               SizedBox(
                 height: 73.h,
               ),
-              if (_authType == AuthFormType.register)
-                CustomTextFormField(
-                  controller: _nameController,
-                  hintText: AppStrings.enterYourName,
-                  label: AppStrings.name,
-                  textInputAction: TextInputAction.next,
-                  textInputType: TextInputType.name,
-                  validator: (val) {
-                    return null;
-                  },
+              FeaturedTextFormFields(
+                authFormType: authCubit.authFormType,
+                emailController: _emailController,
+                nameController: _nameController,
+                passwordController: _passwordController,
+              ),
+              if (authCubit.authFormType == AuthFormType.login)
+                CustomTextButton(
+                  text: AppStrings.forgotPassword,
+                  onPressed: () {},
                 ),
               SizedBox(
-                height: 8.h,
+                height:
+                    authCubit.authFormType == AuthFormType.login ? 20.h : 40.h,
               ),
-              CustomTextFormField(
-                controller: _emailController,
-                label: AppStrings.email,
-                hintText: AppStrings.enterYourEmail,
-                validator: (val) =>
-                    val!.isEmpty ? 'enter your email, please' : null,
-                textInputType: TextInputType.emailAddress,
-                textInputAction: TextInputAction.next,
-              ),
-              SizedBox(
-                height: 8.h,
-              ),
-              CustomTextFormField(
-                controller: _passwordController,
-                label: AppStrings.password,
-                hintText: AppStrings.enterYourPassword,
-                validator: (val) =>
-                    val!.isEmpty ? 'enter your password, please' : null,
-                obscureText: true,
-                textInputAction: TextInputAction.done,
-                textInputType: TextInputType.visiblePassword,
-              ),
-              if (_authType == AuthFormType.login)
-                CustomTextButton(
-                    text: AppStrings.forgotPassword, onPressed: () {}),
-              SizedBox(
-                height: _authType == AuthFormType.login ? 20.h : 40.h,
-              ),
-              CustomElevatedButton(
-                formKey: _formKey,
-                text: _authType == AuthFormType.login
-                    ? AppStrings.login.toUpperCase()
-                    : AppStrings.signup.toUpperCase(),
-                onPressed: () 
-                {
-                  GoRouter.of(context).push(AppRoutes.kNavBarViewRoute);
+              BlocConsumer<AuthCubit, AuthState>(
+                builder: (context, state) {
+                  if (state is AuthLoading) {
+                    return Center(
+                      child: LoadingAnimationWidget.discreteCircle(
+                        color: AppColorsLight.kPrimaryColor,
+                        size: 50,
+                      ),
+                    );
+                  }
+                  return CustomElevatedButton(
+                    text: authCubit.authFormType == AuthFormType.login
+                        ? AppStrings.login.toUpperCase()
+                        : AppStrings.signup.toUpperCase(),
+                    onPressed: () async {
+                      if (_formKey.currentState!.validate()) {
+                        await authCubit.submit();
+                      }
+                    },
+                  );
+                },
+                listener: (context, state) {
+                  if (state is AuthSuccess) {
+                    GoRouter.of(context)
+                        .pushReplacement(AppRoutes.kNavBarViewRoute);
+                  } else if (state is AuthFailure) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('fuck you')));
+                  }
                 },
               ),
               CustomTextButton(
-                text: _authType == AuthFormType.login
+                text: authCubit.authFormType == AuthFormType.login
                     ? AppStrings.dontHaveAccount
                     : AppStrings.haveAccount,
                 onPressed: () {
                   setState(() {
-                    if (_authType == AuthFormType.login) {
-                      _authType = AuthFormType.register;
-                    } else {
-                      _authType = AuthFormType.login;
-                    }
+                    _formKey.currentState!.reset();
+                    authCubit.toggle();
                   });
                 },
               ),
               const Spacer(),
               Center(
                 child: CustomText(
-                  text: _authType == AuthFormType.login
+                  text: authCubit.authFormType == AuthFormType.login
                       ? AppStrings.loginWithSocialAccount
                       : AppStrings.signupWithSocialAccount,
                 ),
