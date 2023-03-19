@@ -1,6 +1,9 @@
 import 'package:e_commerce_app/core/global/themes/app_colors/app_colors_light.dart';
+import 'package:e_commerce_app/core/utils/firebase_service.dart';
+import 'package:e_commerce_app/core/utils/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get_it/get_it.dart';
 
 class ProductsListViewItem extends StatelessWidget {
   const ProductsListViewItem({super.key});
@@ -118,17 +121,20 @@ class ProductsListViewItem extends StatelessWidget {
             ),
           ],
         ),
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(29),
-            color: Colors.white,
-          ),
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: 12.w,
-              vertical: 12.h,
+        GestureDetector(
+          onTap: () {},
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(29),
+              color: Colors.white,
             ),
-            child: const Icon(Icons.favorite_border_outlined),
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 12.w,
+                vertical: 12.h,
+              ),
+              child: const Icon(Icons.favorite_border_outlined),
+            ),
           ),
         ),
       ],
