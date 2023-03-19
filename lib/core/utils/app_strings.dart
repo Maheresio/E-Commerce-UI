@@ -18,4 +18,7 @@ abstract class AppStrings {
   static const String loginWithSocialAccount = 'Or login with social account';
   static const String signupWithSocialAccount =
       'Or sign up with social account';
+
+  //firebase
+  static const kProductsCollection = 'products/';
 }
