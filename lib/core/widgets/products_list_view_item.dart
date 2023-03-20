@@ -1,11 +1,15 @@
+import 'package:e_commerce_app/core/widgets/custom_favorite.dart';
+import 'package:e_commerce_app/core/widgets/custom_rating_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../features/home/model/product_model.dart';
 import '../global/themes/app_colors/app_colors_light.dart';
 
 class ProductsListViewItem extends StatelessWidget {
-  const ProductsListViewItem({super.key});
+  const ProductsListViewItem(this.product, {super.key});
 
+  final ProductModel product;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -21,9 +25,9 @@ class ProductsListViewItem extends StatelessWidget {
                   width: 150.w,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
-                    image: const DecorationImage(
+                    image: DecorationImage(
                         image: NetworkImage(
-                          'https://joyfullystyled.com/wp-content/uploads/2020/02/pink-hat.jpg',
+                          product.imageUrl,
                         ),
                         fit: BoxFit.cover),
                   ),
@@ -40,11 +44,14 @@ class ProductsListViewItem extends StatelessWidget {
                         horizontal: 5.w,
                         vertical: 7.h,
                       ),
-                      child: Text(
-                        '-20%',
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                              fontWeight: FontWeight.w600,
-                            ),
+                      child: FittedBox(
+                        child: Text(
+                          '${product.discountValue}%',
+                          style:
+                              Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                        ),
                       ),
                     ),
                   ),
@@ -56,11 +63,7 @@ class ProductsListViewItem extends StatelessWidget {
             ),
             Row(
               children: [
-                ...List.generate(
-                  5,
-                  (index) =>
-                      const Icon(Icons.star, color: AppColorsLight.kAmberColor),
-                ),
+                const CustomRatingBar(),
                 Text(
                   '(10)',
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
@@ -75,7 +78,7 @@ class ProductsListViewItem extends StatelessWidget {
             Padding(
               padding: EdgeInsetsDirectional.only(start: 5.w),
               child: Text(
-                'Dorothy Perkins',
+                product.category,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       color: AppColorsLight.kGreyColor,
                     ),
@@ -87,7 +90,7 @@ class ProductsListViewItem extends StatelessWidget {
             Padding(
               padding: EdgeInsetsDirectional.only(start: 5.w),
               child: Text(
-                'Evening Dress',
+                product.title,
                 style: Theme.of(context).textTheme.titleLarge,
               ),
             ),
@@ -110,8 +113,8 @@ class ProductsListViewItem extends StatelessWidget {
                               decorationThickness: 5,
                             ),
                       ),
-                      const TextSpan(
-                        text: '15\$',
+                      TextSpan(
+                        text: '${product.price}\$',
                       ),
                     ]),
               ),
@@ -119,26 +122,9 @@ class ProductsListViewItem extends StatelessWidget {
           ],
         ),
         Positioned.directional(
-          bottom: 85.h,
-          textDirection: TextDirection.ltr,
-          child: GestureDetector(
-            onTap: () {},
-            child: Card(
-              elevation: 5,
-              shape: RoundedRectangleBorder(
-                
-                borderRadius: BorderRadius.circular(29),
-              ),
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 10.w,
-                  vertical: 10.h,
-                ),
-                child: const Icon(Icons.favorite_border_outlined,color: AppColorsLight.kSolidColor,),
-              ),
-            ),
-          ),
-        ),
+            bottom: 85.h,
+            textDirection: TextDirection.ltr,
+            child: const CustomFavorite()),
       ],
     );
   }

@@ -2,12 +2,12 @@
 
 class ProductModel {
   final String id;
-  final String price;
-  final String? discountValue;
+  final int price;
+  final int? discountValue;
   final String title;
   final String imageUrl;
   final String category;
-  final String? rating;
+  final int? rating;
   ProductModel({
     required this.id,
     required this.price,
@@ -33,13 +33,13 @@ class ProductModel {
   factory ProductModel.fromMap(Map<String, dynamic> map, String documentId) {
     return ProductModel(
       id: documentId,
-      price: map['price'] as String,
+      price: map['price'] as int,
       discountValue:
-          map['discountValue'] != null ? map['discountValue'] as String : null,
+          map['discountValue'] != null ? map['discountValue'] as int : null,
       title: map['title'] as String,
       imageUrl: map['imageUrl'] as String,
       category: map['category'] as String,
-      rating: map['rating'] != null ? map['rating'] as String : null,
+      rating: map['rating'] != null ? map['rating'] as int : null,
     );
   }
 

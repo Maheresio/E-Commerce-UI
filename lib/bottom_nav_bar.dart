@@ -1,8 +1,3 @@
-import 'package:e_commerce_app/core/utils/service_locator.dart';
-import 'package:e_commerce_app/features/home/manager/home_cubit.dart';
-import 'package:e_commerce_app/features/home/repo/home_repo_imp.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'core/global/themes/app_colors/app_colors_light.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
@@ -73,10 +68,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   List<Widget> _buildScreens() {
     return [
-      BlocProvider(
-        create: (context) => HomeCubit(getIt.get<HomeRepoImp>()),
-        child: const HomeView(),
-      ),
+      const HomeView(),
       const HomeView(),
       const HomeView(),
       const HomeView(),
