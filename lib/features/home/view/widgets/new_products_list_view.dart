@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'products_list_view_item.dart';
+import '../../../../core/widgets/products_list_view_item.dart';
 
-class ProductsListView extends StatelessWidget {
-  const ProductsListView({super.key});
+class NewProductsListView extends StatelessWidget {
+  const NewProductsListView({super.key});
 
   @override
   Widget build(BuildContext context) {

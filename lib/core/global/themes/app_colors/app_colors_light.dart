@@ -23,7 +23,6 @@ abstract class AppColorsLight {
   static const kSuccessColor = Color(0xff2AA952);
   static const kSaleColor = Color(0xffDB3022);
   static const kAmberColor = Color(0xffFFBA49);
+  static const kSolidColor = Color(0xffDADADA);
   //static const kGreyTextColor = Color(0xffC4C4C4);
-
- 
 }

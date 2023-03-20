@@ -8,7 +8,7 @@ class ProductsListViewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      alignment: AlignmentDirectional.centerEnd,
+      alignment: AlignmentDirectional.bottomEnd,
       children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -95,42 +95,46 @@ class ProductsListViewItem extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsetsDirectional.only(start: 5.w),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    '15\$',
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: AppColorsLight.kGreyColor,
-                        ),
-                  ),
-                  SizedBox(
-                    height: 4.h,
-                  ),
-                  Text(
-                    '15\$',
+              child: Text.rich(
+                TextSpan(
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: AppColorsLight.kSaleColor,
                         ),
-                  ),
-                ],
+                    children: [
+                      TextSpan(
+                        text: '15\$',
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                              color: AppColorsLight.kGreyColor,
+                              decoration: TextDecoration.lineThrough,
+                              decorationThickness: 5,
+                            ),
+                      ),
+                      const TextSpan(
+                        text: '15\$',
+                      ),
+                    ]),
               ),
             ),
           ],
         ),
-        GestureDetector(
-          onTap: () {},
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(29),
-              color: Colors.white,
-            ),
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 12.w,
-                vertical: 12.h,
+        Positioned.directional(
+          bottom: 85.h,
+          textDirection: TextDirection.ltr,
+          child: GestureDetector(
+            onTap: () {},
+            child: Card(
+              elevation: 5,
+              shape: RoundedRectangleBorder(
+                
+                borderRadius: BorderRadius.circular(29),
               ),
-              child: const Icon(Icons.favorite_border_outlined),
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 10.w,
+                  vertical: 10.h,
+                ),
+                child: const Icon(Icons.favorite_border_outlined,color: AppColorsLight.kSolidColor,),
+              ),
             ),
           ),
         ),

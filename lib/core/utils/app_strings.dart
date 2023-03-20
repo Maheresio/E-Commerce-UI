@@ -1,4 +1,5 @@
 abstract class AppStrings {
+  //Auth Strings
   static const String login = 'Login';
   static const String signup = 'Sign up';
 
@@ -19,6 +20,12 @@ abstract class AppStrings {
   static const String signupWithSocialAccount =
       'Or sign up with social account';
 
-  //firebase
+  //firebase paths
   static const kProductsCollection = 'products/';
+
+  //Home View Strings
+  static const String kSaleTitle = 'Sale';
+  static const String kNewTitle = 'New';
+  static const String kSaleSubtitle = 'Super summer sale';
+  static const String kNewSubtitle = 'You’ve never seen it before!';
 }
