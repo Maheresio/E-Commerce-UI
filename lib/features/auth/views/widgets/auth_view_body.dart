@@ -1,4 +1,5 @@
-import '../../../../core/global/themes/app_colors/app_colors_light.dart';
+import 'package:e_commerce_app/core/widgets/custom_progress_indicator.dart';
+
 import '../../../../core/helpers/custom_snack_bar.dart';
 import '../../../../core/utils/app_routes.dart';
 import '../../manager/auth_cubit.dart';
@@ -8,7 +9,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/enums.dart';
@@ -81,12 +81,7 @@ class _AuthViewBodyState extends State<AuthViewBody> {
               BlocConsumer<AuthCubit, AuthState>(
                 builder: (context, state) {
                   if (state is AuthLoading) {
-                    return Center(
-                      child: LoadingAnimationWidget.discreteCircle(
-                        color: AppColorsLight.kPrimaryColor,
-                        size: 40.w,
-                      ),
-                    );
+                    return const CustomProgressIndicator();
                   }
                   return CustomElevatedButton(
                     text: authCubit.authFormType == AuthFormType.login
