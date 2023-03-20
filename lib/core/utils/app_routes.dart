@@ -1,3 +1,6 @@
+import 'package:e_commerce_app/features/home/model/product_model.dart';
+import 'package:e_commerce_app/features/home/view/product_detail_view.dart';
+
 import '../../bottom_nav_bar.dart';
 import 'service_locator.dart';
 import '../../features/auth/manager/auth_cubit.dart';
@@ -12,6 +15,7 @@ import 'package:go_router/go_router.dart';
 abstract class AppRoutes {
   static const kAuthViewRoute = '/authView';
   static const kNavBarViewRoute = '/navBarView';
+  static const kProductDetailViewRoute = '/productDetailView';
 
   static final GoRouter router = GoRouter(
     routes: <RouteBase>[
@@ -34,6 +38,12 @@ abstract class AppRoutes {
         path: kNavBarViewRoute,
         builder: (BuildContext context, GoRouterState state) {
           return const BottomNavBar();
+        },
+      ),
+      GoRoute(
+        path: kProductDetailViewRoute,
+        builder: (BuildContext context, GoRouterState state) {
+          return  ProductDetailView(product:state.extra as ProductModel);
         },
       ),
     ],
