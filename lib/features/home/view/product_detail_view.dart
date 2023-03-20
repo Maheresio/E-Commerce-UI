@@ -11,12 +11,21 @@ class ProductDetailView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text(product.title),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios),
           onPressed: () => GoRouter.of(context).pop(),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.share,
+            ),
+          )
+        ],
       ),
-      body: const ProductDetailViewBody(),
+      body:  ProductDetailViewBody(product: product,),
     );
   }
 }

@@ -39,4 +39,14 @@ ThemeData getThemeDataLight(BuildContext context) => ThemeData(
           textStyle: MaterialStateProperty.all(Styles.textStyles14),
         ),
       ),
+
+      //AppBar
+      appBarTheme: AppBarTheme(
+          color: Colors.white,
+          elevation: 1,
+          centerTitle: true,
+          iconTheme: const IconThemeData(
+            color: Colors.black,
+          ),
+          titleTextStyle: Theme.of(context).textTheme.titleLarge),
     );

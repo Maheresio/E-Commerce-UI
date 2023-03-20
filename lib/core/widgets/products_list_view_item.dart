@@ -78,7 +78,7 @@ class ProductsListViewItem extends StatelessWidget {
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: AppColorsLight.kGreyColor,
                         ),
-                  )
+                  ),
                 ],
               ),
               SizedBox(

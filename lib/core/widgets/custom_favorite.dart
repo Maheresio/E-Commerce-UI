@@ -25,7 +25,7 @@ class CustomFavorite extends StatelessWidget {
             ),
             child: const Icon(
               Icons.favorite_border_outlined,
-              color: AppColorsLight.kSolidColor,
+              color: Colors.black26,
             ),
           ),
         ),
