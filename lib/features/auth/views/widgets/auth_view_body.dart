@@ -2,7 +2,7 @@ import 'package:e_commerce_app/core/global/themes/app_colors/app_colors_light.da
 import 'package:e_commerce_app/core/helpers/custom_snack_bar.dart';
 import 'package:e_commerce_app/core/utils/app_routes.dart';
 import 'package:e_commerce_app/features/auth/manager/auth_cubit.dart';
-import 'package:e_commerce_app/features/auth/views/widgets/featured_text_form_fields.dart';
+import 'package:e_commerce_app/features/auth/views/widgets/build_text_form_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -63,7 +63,7 @@ class _AuthViewBodyState extends State<AuthViewBody> {
               SizedBox(
                 height: 73.h,
               ),
-              FeaturedTextFormFields(
+              BuildTextFormFields(
                 authFormType: authCubit.authFormType,
                 emailController: _emailController,
                 nameController: _nameController,
@@ -74,17 +74,17 @@ class _AuthViewBodyState extends State<AuthViewBody> {
                   text: AppStrings.forgotPassword,
                   onPressed: () {},
                 ),
-              SizedBox(
-                height:
-                    authCubit.authFormType == AuthFormType.login ? 20.h : 40.h,
-              ),
+              if (authCubit.authFormType == AuthFormType.register)
+                SizedBox(
+                  height: 40.h,
+                ),
               BlocConsumer<AuthCubit, AuthState>(
                 builder: (context, state) {
                   if (state is AuthLoading) {
                     return Center(
                       child: LoadingAnimationWidget.discreteCircle(
                         color: AppColorsLight.kPrimaryColor,
-                        size: 50,
+                        size: 40.w,
                       ),
                     );
                   }
@@ -115,7 +115,7 @@ class _AuthViewBodyState extends State<AuthViewBody> {
                     : AppStrings.haveAccount,
                 onPressed: () {
                   setState(() {
-                    authCubit.copyWith(email: '',password: '',name: '');
+                    authCubit.copyWith(email: '', password: '', name: '');
                     _formKey.currentState!.reset();
                     FocusScope.of(context).unfocus();
                     authCubit.toggle();

@@ -7,8 +7,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
 
-class FeaturedTextFormFields extends StatelessWidget {
-  const FeaturedTextFormFields(
+class BuildTextFormFields extends StatelessWidget {
+  const BuildTextFormFields(
       {super.key,
       required this.authFormType,
       required this.nameController,
