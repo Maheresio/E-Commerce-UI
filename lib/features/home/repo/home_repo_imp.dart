@@ -6,11 +6,22 @@ import 'home_repo.dart';
 
 class HomeRepoImp implements HomeRepo {
   //don't understand
+
   @override
-  Stream<List<ProductModel>> getProducts() =>
+  Stream<List<ProductModel>> getNewProducts() =>
       getIt.get<FirebaseServices>().getCollectionStream(
             collectionPath: AppStrings.kProductsCollection,
             builder: ((data, documentId) =>
                 ProductModel.fromMap(data!, documentId)),
+          );
+
+  @override
+  Stream<List<ProductModel>> getSaleProducts() =>
+      getIt.get<FirebaseServices>().getCollectionStream(
+            collectionPath: AppStrings.kProductsCollection,
+            builder: ((data, documentId) =>
+                ProductModel.fromMap(data!, documentId)),
+            queryBuilder: (query) =>
+                query.where('discountValue', isNotEqualTo: 0),
           );
 }
