@@ -1,8 +1,8 @@
-import 'package:e_commerce_app/core/utils/app_strings.dart';
-import 'package:e_commerce_app/core/utils/asset_data.dart';
-import 'package:e_commerce_app/core/widgets/featured_list_view.dart';
-import 'package:e_commerce_app/features/home/view/widgets/new_products_list_view.dart';
-import 'package:e_commerce_app/features/home/view/widgets/sale_products_list_view.dart';
+import '../../../../core/utils/app_strings.dart';
+import '../../../../core/utils/asset_data.dart';
+import '../../../../core/widgets/featured_list_view.dart';
+import 'new_products_list_view.dart';
+import 'sale_products_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

@@ -1,11 +1,11 @@
-import 'package:e_commerce_app/core/utils/enums.dart';
-import 'package:e_commerce_app/features/auth/manager/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/app_strings.dart';
+import '../../../../core/utils/enums.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
+import '../../manager/auth_cubit.dart';
 
 class BuildTextFormFields extends StatelessWidget {
   const BuildTextFormFields(

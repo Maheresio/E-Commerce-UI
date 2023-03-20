@@ -1,6 +1,6 @@
-import 'package:e_commerce_app/core/utils/service_locator.dart';
-import 'package:e_commerce_app/features/auth/manager/auth_cubit.dart';
-import 'package:e_commerce_app/features/auth/repos/auth_repo_imp.dart';
+import '../../../core/utils/service_locator.dart';
+import '../manager/auth_cubit.dart';
+import '../repos/auth_repo_imp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -1,7 +1,8 @@
-import 'package:e_commerce_app/core/utils/firebase_service.dart';
-import 'package:e_commerce_app/features/auth/repos/auth_repo_imp.dart';
-import 'package:e_commerce_app/features/home/repo/home_repo_imp.dart';
 import 'package:get_it/get_it.dart';
+
+import '../../features/auth/repos/auth_repo_imp.dart';
+import '../../features/home/repo/home_repo_imp.dart';
+import 'firebase_service.dart';
 
 final getIt = GetIt.instance;
 

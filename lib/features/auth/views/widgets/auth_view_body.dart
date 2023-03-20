@@ -1,8 +1,8 @@
-import 'package:e_commerce_app/core/global/themes/app_colors/app_colors_light.dart';
-import 'package:e_commerce_app/core/helpers/custom_snack_bar.dart';
-import 'package:e_commerce_app/core/utils/app_routes.dart';
-import 'package:e_commerce_app/features/auth/manager/auth_cubit.dart';
-import 'package:e_commerce_app/features/auth/views/widgets/build_text_form_fields.dart';
+import '../../../../core/global/themes/app_colors/app_colors_light.dart';
+import '../../../../core/helpers/custom_snack_bar.dart';
+import '../../../../core/utils/app_routes.dart';
+import '../../manager/auth_cubit.dart';
+import 'build_text_form_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

@@ -1,10 +1,10 @@
-import 'package:e_commerce_app/features/auth/repos/auth_repo_imp.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/utils/app_routes.dart';
 import '../../../core/utils/asset_data.dart';
+import '../../auth/repos/auth_repo_imp.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});

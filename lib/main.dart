@@ -1,6 +1,6 @@
-import 'package:e_commerce_app/core/helpers/custom_status_bar.dart';
-import 'package:e_commerce_app/core/helpers/firebase_init.dart';
-import 'package:e_commerce_app/core/utils/service_locator.dart';
+import 'core/helpers/custom_status_bar.dart';
+import 'core/helpers/firebase_init.dart';
+import 'core/utils/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
