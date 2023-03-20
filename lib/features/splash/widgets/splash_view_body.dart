@@ -33,15 +33,20 @@ class _SplashViewBodyState extends State<SplashViewBody> {
     final repo = GetIt.I.get<AuthRepoImp>();
     repo.authStateChanges().listen((event) {
       event != null
-          ? Future.delayed(
-              const Duration(seconds: 5),
-              () => GoRouter.of(context)
-                  .pushReplacement(AppRoutes.kNavBarViewRoute),
-            )
+          ? Future.delayed(const Duration(seconds: 5), () {
+              if (mounted) {
+                GoRouter.of(context)
+                    .pushReplacement(AppRoutes.kNavBarViewRoute);
+              }
+            })
           : Future.delayed(
               const Duration(seconds: 5),
-              () => GoRouter.of(context)
-                  .pushReplacement(AppRoutes.kAuthViewRoute),
+              () {
+                if (mounted) {
+                  GoRouter.of(context)
+                      .pushReplacement(AppRoutes.kAuthViewRoute);
+                }
+              },
             );
     });
   }

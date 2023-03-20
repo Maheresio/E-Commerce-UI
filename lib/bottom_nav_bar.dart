@@ -2,6 +2,7 @@ import 'package:e_commerce_app/core/global/themes/app_colors/app_colors_light.da
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
+import 'features/auth/views/profile_view.dart';
 import 'features/home/view/home_view.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -18,6 +19,12 @@ class _BottomNavBarState extends State<BottomNavBar> {
   void initState() {
     super.initState();
     _controller = PersistentTabController(initialIndex: 0);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -65,7 +72,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       HomeView(),
       HomeView(),
       HomeView(),
-      HomeView(),
+      ProfileView(),
     ];
   }
 
