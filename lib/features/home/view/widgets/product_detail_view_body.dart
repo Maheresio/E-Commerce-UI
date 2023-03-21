@@ -2,11 +2,11 @@ import 'package:e_commerce_app/core/widgets/custom_elevated_button.dart';
 import 'package:e_commerce_app/core/widgets/custom_favorite.dart';
 import 'package:e_commerce_app/core/widgets/custom_rating_bar.dart';
 import 'package:e_commerce_app/features/home/model/product_model.dart';
-import 'package:e_commerce_app/features/home/view/widgets/custom_drop_down.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/global/themes/app_colors/app_colors_light.dart';
+import 'custom_drop_down.dart';
 
 class ProductDetailViewBody extends StatelessWidget {
   const ProductDetailViewBody({super.key, required this.product});
