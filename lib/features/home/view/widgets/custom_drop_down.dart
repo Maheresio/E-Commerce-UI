@@ -2,20 +2,12 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CustomDropDown extends StatefulWidget {
-  const CustomDropDown({super.key});
+class CustomDropDown extends StatelessWidget {
+  const CustomDropDown(
+      {super.key, required this.itemsList, required this.hintText});
 
-  @override
-  State<CustomDropDown> createState() => _CustomDropDownState();
-}
-
-class _CustomDropDownState extends State<CustomDropDown> {
-  final List<String> genderItems = [
-    'Male',
-    'Female',
-  ];
-
-  String? selectedValue;
+  final List<String> itemsList;
+  final String hintText;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +15,6 @@ class _CustomDropDownState extends State<CustomDropDown> {
       child: Padding(
         padding: EdgeInsetsDirectional.only(end: 16.w),
         child: DropdownButtonFormField2(
-          alignment: AlignmentDirectional.centerStart,
           style: Theme.of(context).textTheme.bodyLarge,
           decoration: InputDecoration(
             isDense: true,
@@ -33,8 +24,9 @@ class _CustomDropDownState extends State<CustomDropDown> {
             ),
           ),
           isExpanded: true,
-          hint: Text('Size', style: Theme.of(context).textTheme.bodyLarge),
-          items: genderItems
+          hint:
+              Text(hintText, style: Theme.of(context).textTheme.bodyLarge),
+          items: itemsList
               .map((item) => DropdownMenuItem<String>(
                     value: item,
                     child: Text(
@@ -44,11 +36,11 @@ class _CustomDropDownState extends State<CustomDropDown> {
               .toList(),
           validator: (value) {
             if (value == null) {
-              return 'Please select gender.';
+              return 'Please select $hintText.';
             }
             return null;
           },
-          onChanged: (value) {},
+          onChanged: null,
           buttonStyleData: const ButtonStyleData(
             height: 50,
             padding: EdgeInsets.only(right: 10),

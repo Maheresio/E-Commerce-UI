@@ -28,4 +28,18 @@ abstract class AppStrings {
   static const String kNewTitle = 'New';
   static const String kSaleSubtitle = 'Super summer sale';
   static const String kNewSubtitle = 'You’ve never seen it before!';
+
+  //drop down form field button
+
+  static const kDropDownInitialSize = 'Size';
+  static const kDropDownInitialColor = 'Color';
+
+  static const List<String> kItemSizeList = ['XS', 'S', 'M', 'L', 'XL'];
+  static const List<String> kItemColorList = [
+    'Black',
+    'Red',
+    'White',
+    'Grey',
+    'Blue'
+  ];
 }

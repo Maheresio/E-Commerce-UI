@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/core/utils/app_strings.dart';
 import 'package:e_commerce_app/core/widgets/custom_elevated_button.dart';
 import 'package:e_commerce_app/core/widgets/custom_favorite.dart';
 import 'package:e_commerce_app/core/widgets/custom_rating_bar.dart';
@@ -30,8 +31,13 @@ class ProductDetailViewBody extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: const [
-                    CustomDropDown(),
-                    CustomDropDown(),
+                    CustomDropDown(
+                        itemsList: AppStrings.kItemSizeList,
+                        hintText: AppStrings.kDropDownInitialSize),
+                    CustomDropDown(
+                      itemsList: AppStrings.kItemColorList,
+                      hintText: AppStrings.kDropDownInitialColor,
+                    ),
                     CustomFavorite(),
                   ],
                 ),
