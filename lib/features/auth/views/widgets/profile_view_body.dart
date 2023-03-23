@@ -16,6 +16,7 @@ class ProfileViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final authCubit = BlocProvider.of<AuthCubit>(context);
+    final user= BlocProvider.of<AuthCubit>(context).getCurrentUser();
     return SafeArea(
       child: Scaffold(
         body: Padding(
@@ -52,14 +53,14 @@ class ProfileViewBody extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Matilda Brown',
+                          user?.displayName??'',
                           style: Theme.of(context).textTheme.headlineSmall,
                         ),
                         SizedBox(
                           height: 4.h,
                         ),
                         Text(
-                          'matildabrown@mail.com',
+                          user?.email??'',
                           style:
                               Theme.of(context).textTheme.titleMedium?.copyWith(
                                     color: AppColorsLight.kGreyColor,

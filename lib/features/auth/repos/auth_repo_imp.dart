@@ -20,12 +20,15 @@ class AuthRepoImp implements AuthRepo {
 
   @override
   Future<User?> signUpWithEmailAndPassword(
-      String email, String password) async {
+      String email, String password,String name) async {
     final user = await _firebaseAuth.createUserWithEmailAndPassword(
         email: email.trim(), password: password);
+        user.user!.updateDisplayName(name);
     return user.user;
   }
 
   @override
   Future<void> logout() async => await _firebaseAuth.signOut();
+
+  
 }

@@ -36,7 +36,7 @@ class AuthCubit extends Cubit<AuthState> {
     this.authFormType = authFormType ?? this.authFormType;
   }
 
-  void updateName(String email) => copyWith(email: email);
+  void updateName(String name) => copyWith(name: name);
   void updateEmail(String email) => copyWith(email: email);
   void updatePassword(String password) => copyWith(password: password);
   void updateAuthFormType(AuthFormType authFormType) =>
@@ -54,7 +54,7 @@ class AuthCubit extends Cubit<AuthState> {
       if (authFormType == AuthFormType.login) {
         await authRepo.loginWithEmailAndPassword(email, password);
       } else {
-        await authRepo.signUpWithEmailAndPassword(email, password);
+        await authRepo.signUpWithEmailAndPassword(email, password, name);
       }
       emit(AuthSuccess());
     } on FirebaseAuthException catch (error) {
@@ -65,8 +65,7 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
- User? getCurrentUser()
-  {
+  User? getCurrentUser() {
     return authRepo.getCurrentUser;
   }
 

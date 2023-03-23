@@ -4,7 +4,7 @@ class FirebaseServices {
   final _firestore = FirebaseFirestore.instance;
 
   //add or update data [path should have collection and document]
-  Future<void> serData({
+  Future<void> setData({
     required String documentPath,
     required Map<String, dynamic> data,
   }) async =>
