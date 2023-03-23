@@ -40,7 +40,7 @@ class CustomDropDown extends StatelessWidget {
             }
             return null;
           },
-          onChanged: null,
+          onChanged: (val){},
           buttonStyleData: const ButtonStyleData(
             height: 50,
             padding: EdgeInsets.only(right: 10),

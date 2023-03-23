@@ -2,6 +2,8 @@ abstract class AppStrings {
   //Auth Strings
   static const String login = 'Login';
   static const String signup = 'Sign up';
+  static const String signOut = 'Sign Out';
+  static const String myProfile = 'My profile';
 
   static const String enterYourName = 'Enter Your Name';
   static const String name = 'Name';
@@ -41,5 +43,23 @@ abstract class AppStrings {
     'White',
     'Grey',
     'Blue'
+  ];
+
+  // profile view
+ static const List<String> kProfileTitle = [
+    'My orders',
+    'Shipping addresses',
+    'Payment methods',
+    'Promocodes',
+    'My reviews',
+    'Settings',
+  ];
+ static const List<String> kProfileSubtitle = [
+    'Already have 12 orders',
+    '3 ddresses',
+    'Visa  **34',
+    'You have special promocodes',
+    'Reviews for 4 items',
+    'Notifications, password',
   ];
 }

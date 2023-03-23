@@ -13,6 +13,7 @@ ThemeData getThemeDataLight(BuildContext context) => ThemeData(
       textTheme: const TextTheme(
         titleLarge: Styles.textStyles16,
         bodyMedium: Styles.textStyles14,
+        headlineSmall: Styles.textStyles16,
         headlineLarge: Styles.textStyles34,
         headlineMedium: Styles.textStyles34,
       ),
