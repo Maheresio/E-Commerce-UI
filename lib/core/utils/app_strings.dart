@@ -3,7 +3,8 @@ abstract class AppStrings {
   static const String login = 'Login';
   static const String signup = 'Sign up';
   static const String signOut = 'Sign Out';
-  static const String myProfile = 'My profile';
+  static const String myProfile = 'My Profile';
+  static const String myCart = 'My Cart';
 
   static const String enterYourName = 'Enter Your Name';
   static const String name = 'Name';

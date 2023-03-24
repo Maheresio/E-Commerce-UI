@@ -1,3 +1,5 @@
+import 'package:e_commerce_app/features/cart/view/cart_view.dart';
+
 import 'core/global/themes/app_colors/app_colors_light.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
@@ -69,7 +71,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   List<Widget> _buildScreens() {
     return [
       const HomeView(),
-      const HomeView(),
+      const CartView(),
       const HomeView(),
       const HomeView(),
       const ProfileView(),
