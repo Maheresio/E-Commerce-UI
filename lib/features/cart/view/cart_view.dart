@@ -7,8 +7,6 @@ class CartView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: CartViewBody(),
-    );
+    return const CartViewBody();
   }
 }

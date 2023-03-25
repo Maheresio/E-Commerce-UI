@@ -14,7 +14,7 @@ class CustomProfileListView extends StatelessWidget {
           title: AppStrings.kProfileTitle.elementAt(index),
           subtitle: AppStrings.kProfileSubtitle.elementAt(index),
         ),
-        itemCount: 6,
+        itemCount: AppStrings.kProfileTitle.length,
       ),
     );
   }

@@ -1,3 +1,6 @@
+import 'package:e_commerce_app/core/utils/app_strings.dart';
+import 'package:e_commerce_app/features/cart/view/widgets/custom_cart_counter_icon.dart';
+import 'package:e_commerce_app/features/cart/view/widgets/custom_cart_rich_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -9,87 +12,98 @@ class CartListViewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 104.h,
+      height: 120.h,
+      width: double.infinity,
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            SizedBox(
-              width: 104.w,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: FittedBox
-              (
-                  fit: BoxFit.fill,
-                  child: Image.network(
-                      'https://ae01.alicdn.com/kf/HTB1zsfoadfvK1RjSspfq6zzXFXa5/Vneck.jpg'),
-                ),
-              ),
+            ClipRRect(
+              borderRadius: const BorderRadiusDirectional.only(
+                  bottomStart: Radius.circular(8),
+                  topStart: Radius.circular(8)),
+              child: Image.network(
+                  'https://ae01.alicdn.com/kf/HTB1zsfoadfvK1RjSspfq6zzXFXa5/Vneck.jpg'),
             ),
-            Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 12.w),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           'Pull over',
                           style:
-                              Theme.of(context).textTheme.titleMedium?.copyWith(
+                              Theme.of(context).textTheme.titleLarge?.copyWith(
                                     fontWeight: FontWeight.w600,
                                   ),
                         ),
+                        const Icon(
+                          Icons.more_vert,
+                          color: AppColorsLight.kGreyColor,
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 4.h,
+                    ),
+                    Row(
+                      children: [
+                        const CustomCartRichText(
+                            label: AppStrings.kCartColorLabel, value: 'Black'),
+                        SizedBox(
+                          width: 14.w,
+                        ),
+                        const CustomCartRichText(
+                            label: AppStrings.kCartSizeLabel, value: 'L'),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 14.h,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
                         Row(
                           children: [
-                            Text(
-                              'Color: Black',
-                              style: Theme.of(context).textTheme.bodySmall,
+                            const CustomCartCounterIcon(
+                              icon: Icons.remove,
                             ),
-                            Text(
-                              'Size: L',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodySmall
-                                  ?.copyWith(
-                                    color: AppColorsLight.kGreyColor,
-                                  ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 16.w),
+                              child: Text(
+                                '1',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleMedium!
+                                    .copyWith(fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                            const CustomCartCounterIcon(
+                              icon: Icons.add,
                             ),
                           ],
                         ),
-                      ],
-                    ),
-                    const Icon(Icons.more_vert),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Row(
-                      children: [
-                        Card(
-                          child: IconButton(
-                            icon: const Icon(Icons.add),
-                            onPressed: () {},
-                          ),
-                        ),
-                        const Text('1'),
-                        Card(
-                          child: IconButton(
-                            icon: const Icon(Icons.add),
-                            onPressed: () {},
-                          ),
+                        Text(
+                          '41\$',
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleMedium!
+                              .copyWith(fontWeight: FontWeight.w500),
                         ),
                       ],
                     ),
-                    const Text('41'),
                   ],
                 ),
-              ],
+              ),
             ),
           ],
         ),

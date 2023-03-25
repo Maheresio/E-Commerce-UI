@@ -47,7 +47,7 @@ abstract class AppStrings {
   ];
 
   // profile view
- static const List<String> kProfileTitle = [
+  static const List<String> kProfileTitle = [
     'My orders',
     'Shipping addresses',
     'Payment methods',
@@ -55,7 +55,7 @@ abstract class AppStrings {
     'My reviews',
     'Settings',
   ];
- static const List<String> kProfileSubtitle = [
+  static const List<String> kProfileSubtitle = [
     'Already have 12 orders',
     '3 ddresses',
     'Visa  **34',
@@ -63,4 +63,12 @@ abstract class AppStrings {
     'Reviews for 4 items',
     'Notifications, password',
   ];
+
+//Cart View
+  static const kCartColorLabel = 'Color:';
+  static const kCartSizeLabel = 'Size:';
+  static const kCartTotalAmount = 'Total amount:';
+
+//
+  static const kCheckout = 'CHECKOUT';
 }
