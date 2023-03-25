@@ -1,6 +1,6 @@
-import 'package:e_commerce_app/core/global/themes/app_colors/app_colors_light.dart';
-import 'package:e_commerce_app/core/utils/app_strings.dart';
-import 'package:e_commerce_app/features/auth/views/widgets/custom_profile_list_view.dart';
+import '../../../../core/global/themes/app_colors/app_colors_light.dart';
+import '../../../../core/utils/app_strings.dart';
+import 'custom_profile_list_view.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/app_routes.dart';

@@ -1,8 +1,8 @@
-import 'package:e_commerce_app/core/utils/app_strings.dart';
-import 'package:e_commerce_app/core/widgets/custom_elevated_button.dart';
-import 'package:e_commerce_app/core/widgets/custom_favorite.dart';
-import 'package:e_commerce_app/core/widgets/custom_rating_bar.dart';
-import 'package:e_commerce_app/features/home/model/product_model.dart';
+import '../../../../core/utils/app_strings.dart';
+import '../../../../core/widgets/custom_elevated_button.dart';
+import '../../../../core/widgets/custom_favorite.dart';
+import '../../../../core/widgets/custom_rating_bar.dart';
+import '../../model/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -16,6 +16,7 @@ class ProductDetailViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -89,8 +90,8 @@ class ProductDetailViewBody extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       fontWeight: FontWeight.w400, letterSpacing: .5),
                 ),
-                SizedBox(
-                  height: 20.h,
+                 SizedBox(
+                  height: 16.h,
                 ),
                 CustomElevatedButton(text: 'ADD TO CART', onPressed: () {}),
               ],

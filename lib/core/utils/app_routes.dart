@@ -1,5 +1,5 @@
-import 'package:e_commerce_app/features/home/model/product_model.dart';
-import 'package:e_commerce_app/features/home/view/product_detail_view.dart';
+import '../../features/home/model/product_model.dart';
+import '../../features/home/view/product_detail_view.dart';
 
 import '../../bottom_nav_bar.dart';
 import 'service_locator.dart';

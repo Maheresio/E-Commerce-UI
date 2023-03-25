@@ -1,11 +1,11 @@
-import 'core/helpers/custom_status_bar.dart';
-import 'core/helpers/firebase_init.dart';
-import 'core/utils/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'core/global/themes/themes_data/theme_data_light.dart';
+import 'core/helpers/custom_status_bar.dart';
+import 'core/helpers/firebase_init.dart';
 import 'core/utils/app_routes.dart';
+import 'core/utils/service_locator.dart';
 
 void main() async {
   await firebaseInit();

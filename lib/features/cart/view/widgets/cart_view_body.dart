@@ -1,6 +1,6 @@
-import 'package:e_commerce_app/core/global/themes/app_colors/app_colors_light.dart';
-import 'package:e_commerce_app/core/widgets/custom_elevated_button.dart';
-import 'package:e_commerce_app/features/cart/view/widgets/cart_list_view.dart';
+import '../../../../core/global/themes/app_colors/app_colors_light.dart';
+import '../../../../core/widgets/custom_elevated_button.dart';
+import 'cart_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

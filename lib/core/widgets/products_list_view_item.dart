@@ -1,6 +1,6 @@
-import 'package:e_commerce_app/core/utils/app_routes.dart';
-import 'package:e_commerce_app/core/widgets/custom_favorite.dart';
-import 'package:e_commerce_app/core/widgets/custom_rating_bar.dart';
+import '../utils/app_routes.dart';
+import 'custom_favorite.dart';
+import 'custom_rating_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';

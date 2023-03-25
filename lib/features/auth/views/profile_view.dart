@@ -1,9 +1,9 @@
-import '../../../core/utils/service_locator.dart';
-import '../manager/auth_cubit.dart';
-import '../repos/auth_repo_imp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/utils/service_locator.dart';
+import '../manager/auth_cubit.dart';
+import '../repos/auth_repo_imp.dart';
 import 'widgets/profile_view_body.dart';
 
 class ProfileView extends StatelessWidget {

@@ -1,5 +1,6 @@
-import 'package:e_commerce_app/core/global/themes/app_colors/app_colors_light.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../core/global/themes/app_colors/app_colors_light.dart';
 
 class CustomCartRichText extends StatelessWidget {
   const CustomCartRichText(

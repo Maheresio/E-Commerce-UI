@@ -1,6 +1,6 @@
-import 'package:e_commerce_app/core/utils/app_strings.dart';
-import 'package:e_commerce_app/features/cart/view/widgets/custom_cart_counter_icon.dart';
-import 'package:e_commerce_app/features/cart/view/widgets/custom_cart_rich_text.dart';
+import '../../../../core/utils/app_strings.dart';
+import 'custom_cart_counter_icon.dart';
+import 'custom_cart_rich_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

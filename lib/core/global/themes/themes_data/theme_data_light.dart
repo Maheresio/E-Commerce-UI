@@ -1,6 +1,6 @@
-import '../../../utils/styles.dart';
 import 'package:flutter/material.dart';
 
+import '../../../utils/styles.dart';
 import '../app_colors/app_colors_light.dart';
 
 ThemeData getThemeDataLight(BuildContext context) => ThemeData(

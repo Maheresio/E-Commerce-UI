@@ -69,6 +69,6 @@ abstract class AppStrings {
   static const kCartSizeLabel = 'Size:';
   static const kCartTotalAmount = 'Total amount:';
 
-//
+//Checkout
   static const kCheckout = 'CHECKOUT';
 }

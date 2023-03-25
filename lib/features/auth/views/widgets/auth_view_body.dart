@@ -1,21 +1,20 @@
-import 'package:e_commerce_app/core/widgets/custom_progress_indicator.dart';
-
-import '../../../../core/helpers/custom_snack_bar.dart';
-import '../../../../core/utils/app_routes.dart';
-import '../../manager/auth_cubit.dart';
-import 'build_text_form_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/helpers/custom_snack_bar.dart';
+import '../../../../core/utils/app_routes.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/enums.dart';
 import '../../../../core/widgets/custom_elevated_button.dart';
+import '../../../../core/widgets/custom_progress_indicator.dart';
 import '../../../../core/widgets/custom_text.dart';
 import '../../../../core/widgets/custom_text_button.dart';
 import '../../../../core/widgets/text_action_button.dart';
+import '../../manager/auth_cubit.dart';
+import 'build_text_form_fields.dart';
 
 class AuthViewBody extends StatefulWidget {
   const AuthViewBody({super.key});
