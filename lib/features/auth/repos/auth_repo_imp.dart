@@ -1,9 +1,14 @@
+import 'package:e_commerce_app/core/utils/firebase_api_paths.dart';
+import 'package:e_commerce_app/core/utils/firebase_service.dart';
+import 'package:e_commerce_app/core/utils/service_locator.dart';
+import 'package:e_commerce_app/features/auth/model/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'auth_repo.dart';
 
 class AuthRepoImp implements AuthRepo {
   final _firebaseAuth = FirebaseAuth.instance;
+  final _fireServices = getIt.get<FirebaseServices>();
 
   @override
   Stream<User?> authStateChanges() => _firebaseAuth.authStateChanges();
@@ -20,15 +25,21 @@ class AuthRepoImp implements AuthRepo {
 
   @override
   Future<User?> signUpWithEmailAndPassword(
-      String email, String password,String name) async {
+      String email, String password, String name) async {
     final user = await _firebaseAuth.createUserWithEmailAndPassword(
         email: email.trim(), password: password);
-        user.user!.updateDisplayName(name);
+    user.user!.updateDisplayName(name);
     return user.user;
   }
 
   @override
   Future<void> logout() async => await _firebaseAuth.signOut();
 
-  
+  @override
+  Future<void> setUserData(UserModel user) async {
+    await _fireServices.setData(
+      documentPath: FirebaseApiPaths.users(user.uid),
+      data: user.toMap(),
+    );
+  }
 }

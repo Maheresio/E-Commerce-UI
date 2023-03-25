@@ -1,4 +1,5 @@
-import '../../../core/utils/app_strings.dart';
+import 'package:e_commerce_app/core/utils/firebase_api_paths.dart';
+
 import '../../../core/utils/firebase_service.dart';
 import '../../../core/utils/service_locator.dart';
 import '../model/product_model.dart';
@@ -10,7 +11,7 @@ class HomeRepoImp implements HomeRepo {
   @override
   Stream<List<ProductModel>> getNewProducts() =>
       getIt.get<FirebaseServices>().getCollectionStream(
-            collectionPath: AppStrings.kProductsCollection,
+            collectionPath: FirebaseApiPaths.products(),
             builder: ((data, documentId) =>
                 ProductModel.fromMap(data!, documentId)),
           );
@@ -18,7 +19,7 @@ class HomeRepoImp implements HomeRepo {
   @override
   Stream<List<ProductModel>> getSaleProducts() =>
       getIt.get<FirebaseServices>().getCollectionStream(
-            collectionPath: AppStrings.kProductsCollection,
+            collectionPath: FirebaseApiPaths.products(),
             builder: ((data, documentId) =>
                 ProductModel.fromMap(data!, documentId)),
             queryBuilder: (query) =>

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/error/firebase_exceptions.dart';
 import '../../../core/utils/enums.dart';
+import '../model/user_model.dart';
 import '../repos/auth_repo.dart';
 
 part 'auth_state.dart';
@@ -55,6 +56,7 @@ class AuthCubit extends Cubit<AuthState> {
         await authRepo.loginWithEmailAndPassword(email, password);
       } else {
         await authRepo.signUpWithEmailAndPassword(email, password, name);
+        await setUserData();
       }
       emit(AuthSuccess());
     } on FirebaseAuthException catch (error) {
@@ -62,6 +64,19 @@ class AuthCubit extends Cubit<AuthState> {
       emit(AuthFailure(errorMsg));
     } catch (error) {
       emit(AuthFailure(error.toString()));
+    }
+  }
+
+  Future<void> setUserData() async {
+    try {
+      final userId = getCurrentUser()!.uid;
+      await authRepo.setUserData(UserModel(
+        email: email,
+        name: name,
+        uid: userId,
+      ));
+    } catch (error) {
+      debugPrint(error.toString());
     }
   }
 

@@ -23,8 +23,6 @@ abstract class AppStrings {
   static const String signupWithSocialAccount =
       'Or sign up with social account';
 
-  //firebase paths
-  static const kProductsCollection = 'products/';
 
   //Home View Strings
   static const String kSaleTitle = 'Sale';
