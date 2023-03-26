@@ -72,9 +72,9 @@ class ProductsListViewItem extends StatelessWidget {
               ),
               Row(
                 children: [
-                  const CustomRatingBar(),
+                  CustomRatingBar(rating: product.rate),
                   Text(
-                    '(${product.rating})',
+                    '(${product.rate})',
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: AppColorsLight.kGreyColor,
                         ),

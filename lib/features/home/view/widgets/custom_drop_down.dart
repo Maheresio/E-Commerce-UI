@@ -1,6 +1,10 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:e_commerce_app/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+
+import '../../manager/product_provider.dart';
 
 class CustomDropDown extends StatelessWidget {
   const CustomDropDown(
@@ -24,8 +28,7 @@ class CustomDropDown extends StatelessWidget {
             ),
           ),
           isExpanded: true,
-          hint:
-              Text(hintText, style: Theme.of(context).textTheme.bodyLarge),
+          hint: Text(hintText, style: Theme.of(context).textTheme.bodyLarge),
           items: itemsList
               .map((item) => DropdownMenuItem<String>(
                     value: item,
@@ -40,7 +43,7 @@ class CustomDropDown extends StatelessWidget {
             }
             return null;
           },
-          onChanged: (val){},
+          onChanged: (val) {},
           buttonStyleData: const ButtonStyleData(
             height: 50,
             padding: EdgeInsets.only(right: 10),

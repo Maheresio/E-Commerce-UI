@@ -7,7 +7,7 @@ class ProductModel {
   final String title;
   final String imageUrl;
   final String category;
-  final int? rating;
+  final int rate;
   ProductModel({
     required this.id,
     required this.price,
@@ -15,7 +15,7 @@ class ProductModel {
     required this.imageUrl,
     this.discountValue,
     this.category = 'Other',
-    this.rating,
+    required this.rate,
   });
 
   Map<String, dynamic> toMap() {
@@ -26,7 +26,7 @@ class ProductModel {
       'title': title,
       'imageUrl': imageUrl,
       'category': category,
-      'rating': rating,
+      'rate': rate,
     };
   }
 
@@ -39,7 +39,7 @@ class ProductModel {
       title: map['title'] as String,
       imageUrl: map['imageUrl'] as String,
       category: map['category'] as String,
-      rating: map['rating'] != null ? map['rating'] as int : null,
+      rate: map['rate']  as int ,
     );
   }
 
@@ -53,7 +53,7 @@ class ProductModel {
         other.title == title &&
         other.imageUrl == imageUrl &&
         other.category == category &&
-        other.rating == rating;
+        other.rate == rate;
   }
 
   @override
@@ -64,6 +64,6 @@ class ProductModel {
         title.hashCode ^
         imageUrl.hashCode ^
         category.hashCode ^
-        rating.hashCode;
+        rate.hashCode;
   }
 }

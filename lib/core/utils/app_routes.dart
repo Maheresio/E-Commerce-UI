@@ -1,3 +1,6 @@
+import 'package:e_commerce_app/features/home/manager/product_provider.dart';
+import 'package:provider/provider.dart';
+
 import '../../features/home/model/product_model.dart';
 import '../../features/home/view/product_detail_view.dart';
 
@@ -43,7 +46,10 @@ abstract class AppRoutes {
       GoRoute(
         path: kProductDetailViewRoute,
         builder: (BuildContext context, GoRouterState state) {
-          return  ProductDetailView(product:state.extra as ProductModel);
+          return ChangeNotifierProvider(
+            create: (context) => ProductProvider(),
+            child: ProductDetailView(product: state.extra as ProductModel),
+          );
         },
       ),
     ],

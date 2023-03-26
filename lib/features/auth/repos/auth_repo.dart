@@ -8,6 +8,10 @@ abstract class AuthRepo {
       String email, String password, String name);
   User? get getCurrentUser;
   Future<void> setUserData(UserModel user);
+  Future<void> saveUserIdLocally();
+  Future<void> deleteUserIdLocally();
+  
+
   Stream<User?> authStateChanges();
   Future<void> logout();
 }

@@ -3,12 +3,13 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomRatingBar extends StatelessWidget {
-  const CustomRatingBar({super.key});
+  const CustomRatingBar({super.key, required this.rating});
 
+final int rating;
   @override
   Widget build(BuildContext context) {
     return RatingBar.builder(
-      initialRating: 3,
+      initialRating: rating.toDouble(),
       minRating: 1,
       direction: Axis.horizontal,
       allowHalfRating: true,

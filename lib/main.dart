@@ -10,7 +10,7 @@ import 'core/utils/service_locator.dart';
 void main() async {
   await firebaseInit();
   customStatusBar();
-  setupServiceLocator();
+ setupServiceLocator();
   runApp(const HomePage());
 }
 

@@ -58,6 +58,8 @@ class AuthCubit extends Cubit<AuthState> {
         await authRepo.signUpWithEmailAndPassword(email, password, name);
         await setUserData();
       }
+      await authRepo.saveUserIdLocally();
+
       emit(AuthSuccess());
     } on FirebaseAuthException catch (error) {
       String errorMsg = getExceptionMsg(error);
@@ -88,6 +90,7 @@ class AuthCubit extends Cubit<AuthState> {
     emit(AuthLoading());
     try {
       await authRepo.logout();
+      await authRepo.deleteUserIdLocally();
       emit(AuthSuccess());
     } on FirebaseAuthException catch (error) {
       emit(AuthFailure(error.message!));

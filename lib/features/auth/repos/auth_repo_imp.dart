@@ -3,12 +3,14 @@ import 'package:e_commerce_app/core/utils/firebase_service.dart';
 import 'package:e_commerce_app/core/utils/service_locator.dart';
 import 'package:e_commerce_app/features/auth/model/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'auth_repo.dart';
 
+final _fireServices = getIt.get<FirebaseServices>();
+
 class AuthRepoImp implements AuthRepo {
   final _firebaseAuth = FirebaseAuth.instance;
-  final _fireServices = getIt.get<FirebaseServices>();
 
   @override
   Stream<User?> authStateChanges() => _firebaseAuth.authStateChanges();
@@ -41,5 +43,17 @@ class AuthRepoImp implements AuthRepo {
       documentPath: FirebaseApiPaths.users(user.uid),
       data: user.toMap(),
     );
+  }
+
+  @override
+  Future<void> saveUserIdLocally() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('uid', getCurrentUser!.uid);
+  }
+
+  @override
+  Future<void> deleteUserIdLocally() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.remove('uid');
   }
 }
