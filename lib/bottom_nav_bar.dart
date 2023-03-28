@@ -1,3 +1,6 @@
+import 'package:e_commerce_app/features/home/manager/product_provider.dart';
+import 'package:provider/provider.dart';
+
 import 'features/cart/view/cart_view.dart';
 
 import 'core/global/themes/app_colors/app_colors_light.dart';
@@ -70,7 +73,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   List<Widget> _buildScreens() {
     return [
-      const HomeView(),
+      ChangeNotifierProvider(
+        create: (context) => ProductProvider(),
+        child: const HomeView(),
+      ),
       const CartView(),
       const HomeView(),
       const HomeView(),

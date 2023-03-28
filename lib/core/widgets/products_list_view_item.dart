@@ -1,3 +1,6 @@
+import 'package:provider/provider.dart';
+
+import '../../features/home/manager/product_provider.dart';
 import '../utils/app_routes.dart';
 import 'custom_favorite.dart';
 import 'custom_rating_bar.dart';
@@ -14,6 +17,8 @@ class ProductsListViewItem extends StatelessWidget {
   final ProductModel product;
   @override
   Widget build(BuildContext context) {
+    final providerData = Provider.of<ProductProvider>(context);
+
     return InkWell(
       onTap: () => GoRouter.of(context).push(
         AppRoutes.kProductDetailViewRoute,
@@ -132,9 +137,12 @@ class ProductsListViewItem extends StatelessWidget {
             ],
           ),
           Positioned.directional(
-              bottom: 85.h,
-              textDirection: TextDirection.ltr,
-              child: const CustomFavorite()),
+            bottom: 85.h,
+            textDirection: TextDirection.ltr,
+            child: CustomFavorite(
+              onTap: (providerData.toggleFavorite),
+            ),
+          ),
         ],
       ),
     );

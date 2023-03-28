@@ -1,15 +1,22 @@
+import 'package:e_commerce_app/core/global/themes/app_colors/app_colors_light.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
+import '../../features/home/manager/product_provider.dart';
 
 class CustomFavorite extends StatelessWidget {
-  const CustomFavorite({super.key});
+  const CustomFavorite({super.key, this.onTap});
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {},
-      child: Material(
+    final providerData = Provider.of<ProductProvider>(context);
+
+    return InkWell(
+      onTap: onTap,
+      child: PhysicalModel(
+        color: Colors.white,
         elevation: 5,
         borderRadius: BorderRadius.circular(29),
         child: DecoratedBox(
@@ -22,10 +29,15 @@ class CustomFavorite extends StatelessWidget {
               horizontal: 10.w,
               vertical: 10.h,
             ),
-            child: const Icon(
-              Icons.favorite_border_outlined,
-              color: Colors.black26,
-            ),
+            child: providerData.isFavorite
+                ? const Icon(
+                    Icons.favorite_border,
+                    color: AppColorsLight.kAmberColor,
+                  )
+                : const Icon(
+                    Icons.favorite_border_outlined,
+                    color: Colors.black26,
+                  ),
           ),
         ),
       ),

@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/core/helpers/custom_snack_bar.dart';
 import 'package:e_commerce_app/features/home/manager/product_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -19,18 +20,18 @@ class ProductDetailViewBody extends StatefulWidget {
 
   @override
   State<ProductDetailViewBody> createState() => _ProductDetailViewBodyState();
-}  final _formKey = GlobalKey<FormState>();
+}
 
+final _formKey = GlobalKey<FormState>();
 
 class _ProductDetailViewBodyState extends State<ProductDetailViewBody> {
-
   @override
   Widget build(BuildContext context) {
     final providerData = Provider.of<ProductProvider>(context);
-    return SingleChildScrollView(
-      physics: const BouncingScrollPhysics(),
-      child: Form(
-        key: _formKey,
+    return Form(
+      key: _formKey,
+      child: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -45,16 +46,20 @@ class _ProductDetailViewBodyState extends State<ProductDetailViewBody> {
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
+                    children: [
                       CustomDropDown(
                         itemsList: AppStrings.kItemSizeList,
                         hintText: AppStrings.kDropDownInitialSize,
+                        onChanged: (size) => providerData.updateSize(size!),
                       ),
                       CustomDropDown(
                         itemsList: AppStrings.kItemColorList,
                         hintText: AppStrings.kDropDownInitialColor,
+                        onChanged: (color) => providerData.updateColor(color!),
                       ),
-                      CustomFavorite(),
+                      CustomFavorite(
+                        onTap: (providerData.toggleFavorite),
+                      ),
                     ],
                   ),
                   SizedBox(
@@ -120,6 +125,8 @@ class _ProductDetailViewBodyState extends State<ProductDetailViewBody> {
                             color: providerData.color,
                             size: providerData.size,
                           );
+                          customSnackBar(context, 'The item added to cart');
+                          _formKey.currentState!.reset();
                         }
                       }),
                 ],

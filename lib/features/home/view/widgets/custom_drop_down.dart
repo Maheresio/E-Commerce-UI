@@ -1,17 +1,18 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:e_commerce_app/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
 
-import '../../manager/product_provider.dart';
 
 class CustomDropDown extends StatelessWidget {
   const CustomDropDown(
-      {super.key, required this.itemsList, required this.hintText});
+      {super.key,
+      required this.itemsList,
+      required this.hintText,
+      this.onChanged});
 
   final List<String> itemsList;
   final String hintText;
+  final void Function(String?)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +44,7 @@ class CustomDropDown extends StatelessWidget {
             }
             return null;
           },
-          onChanged: (val) {},
+          onChanged: onChanged,
           buttonStyleData: const ButtonStyleData(
             height: 50,
             padding: EdgeInsets.only(right: 10),

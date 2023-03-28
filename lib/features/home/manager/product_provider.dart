@@ -20,16 +20,15 @@ class ProductProvider with ChangeNotifier {
   void copyWith({
     String? size,
     String? color,
-    bool? isFavorite,
   }) {
-    this.size = size ?? '';
-    this.color = color ?? '';
-    this.isFavorite = isFavorite ?? false;
+    this.size = size ?? this.size;
+    this.color = color ?? this.color;
   }
 
   void updateSize(String size) => copyWith(size: size);
+
   void updateColor(String color) => copyWith(color: color);
-  void updateIsFavorite(bool isFavorite) => copyWith(isFavorite: isFavorite);
+
 
   void toggleFavorite() {
     isFavorite = !isFavorite;
