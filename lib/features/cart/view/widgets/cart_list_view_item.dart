@@ -42,7 +42,7 @@ class CartListViewItem extends StatelessWidget {
                         Text(
                           'Pull over',
                           style:
-                              Theme.of(context).textTheme.titleLarge?.copyWith(
+                              Theme.of(context).textTheme.titleLarge!.copyWith(
                                     fontWeight: FontWeight.w600,
                                   ),
                         ),

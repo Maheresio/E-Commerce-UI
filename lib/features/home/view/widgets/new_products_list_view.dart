@@ -28,7 +28,7 @@ class NewProductsListView extends StatelessWidget {
                     style: Theme.of(context)
                         .textTheme
                         .titleLarge
-                        ?.copyWith(color: AppColorsLight.kPrimaryColor),
+                        !.copyWith(color: AppColorsLight.kPrimaryColor),
                   ),
                 );
               }

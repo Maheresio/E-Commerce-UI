@@ -61,7 +61,7 @@ class ProfileViewBody extends StatelessWidget {
                       Text(
                         user?.email ?? '',
                         style:
-                            Theme.of(context).textTheme.titleMedium?.copyWith(
+                            Theme.of(context).textTheme.titleMedium!.copyWith(
                                   color: AppColorsLight.kGreyColor,
                                   fontWeight: FontWeight.w500,
                                 ),

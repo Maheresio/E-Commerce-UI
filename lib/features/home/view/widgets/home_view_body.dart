@@ -24,7 +24,7 @@ class HomeViewBody extends StatelessWidget {
                 bottom: 26.h,
                 child: Text(
                   'Street clothes',
-                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                  style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                         color: Colors.white,
                         fontWeight: FontWeight.w900,
                       ),

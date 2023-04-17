@@ -62,7 +62,7 @@ class ProductsListViewItem extends StatelessWidget {
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyMedium
-                                ?.copyWith(
+                                !.copyWith(
                                   fontWeight: FontWeight.w600,
                                 ),
                           ),
@@ -80,7 +80,7 @@ class ProductsListViewItem extends StatelessWidget {
                   CustomRatingBar(rating: product.rate),
                   Text(
                     '(${product.rate})',
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                           color: AppColorsLight.kGreyColor,
                         ),
                   ),
@@ -93,7 +93,7 @@ class ProductsListViewItem extends StatelessWidget {
                 padding: EdgeInsetsDirectional.only(start: 5.w),
                 child: Text(
                   product.category,
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         color: AppColorsLight.kGreyColor,
                       ),
                 ),
@@ -115,14 +115,14 @@ class ProductsListViewItem extends StatelessWidget {
                 padding: EdgeInsetsDirectional.only(start: 5.w),
                 child: Text.rich(
                   TextSpan(
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                             color: AppColorsLight.kSaleColor,
                           ),
                       children: [
                         TextSpan(
                           text: '15\$',
                           style:
-                              Theme.of(context).textTheme.bodyMedium?.copyWith(
+                              Theme.of(context).textTheme.bodyMedium!.copyWith(
                                     color: AppColorsLight.kGreyColor,
                                     decoration: TextDecoration.lineThrough,
                                     decorationThickness: 5,

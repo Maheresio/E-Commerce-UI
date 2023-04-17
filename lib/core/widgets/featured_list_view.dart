@@ -33,7 +33,7 @@ class FeaturedListView extends StatelessWidget {
                 onPressed: onPressed,
                 child: Text(
                   'View all',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         color: AppColorsLight.kBlackColor,
                       ),
                 ),
@@ -46,7 +46,7 @@ class FeaturedListView extends StatelessWidget {
         ),
         Text(
           subtitle,
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                 color: AppColorsLight.kGreyColor,
               ),
         ),

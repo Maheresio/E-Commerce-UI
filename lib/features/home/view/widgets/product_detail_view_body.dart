@@ -73,14 +73,14 @@ class _ProductDetailViewBodyState extends State<ProductDetailViewBody> {
                         style: Theme.of(context)
                             .textTheme
                             .headlineSmall
-                            ?.copyWith(fontWeight: FontWeight.w600),
+                            !.copyWith(fontWeight: FontWeight.w600),
                       ),
                       Text(
                         '\$${widget.product.price}',
                         style: Theme.of(context)
                             .textTheme
                             .headlineSmall
-                            ?.copyWith(fontWeight: FontWeight.w600),
+                            !.copyWith(fontWeight: FontWeight.w600),
                       ),
                     ],
                   ),
@@ -96,7 +96,7 @@ class _ProductDetailViewBodyState extends State<ProductDetailViewBody> {
                       CustomRatingBar(rating: widget.product.rate),
                       Text(
                         '(${widget.product.rate})',
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                               color: AppColorsLight.kGreyColor,
                             ),
                       )
@@ -107,7 +107,7 @@ class _ProductDetailViewBodyState extends State<ProductDetailViewBody> {
                   ),
                   Text(
                     'Short dress in soft cotton jersey with decorative buttons down the front and a wide, frill-trimmed square neckline with concealed elastication. Elasticated seam under the bust and short puff sleeves with a small frill trim.',
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                         fontWeight: FontWeight.w400, letterSpacing: .5),
                   ),
                   SizedBox(

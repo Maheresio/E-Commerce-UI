@@ -19,7 +19,7 @@ class CustomProfileListViewItem extends StatelessWidget {
       ),
       subtitle: Text(
         subtitle,
-        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+        style: Theme.of(context).textTheme.bodySmall!.copyWith(
               color: AppColorsLight.kGreyColor,
             ),
       ),

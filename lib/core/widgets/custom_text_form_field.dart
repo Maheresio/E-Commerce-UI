@@ -42,7 +42,7 @@ class CustomTextFormField extends StatelessWidget {
         floatingLabelBehavior: floatingLabelBehavior,
         label: Text(label),
         hintText: hintText,
-        hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
+        hintStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
               color: AppColorsLight.kGreyColor,
             ),
       ),
