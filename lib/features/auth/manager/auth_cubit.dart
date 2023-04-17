@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../../../core/error/firebase_exceptions.dart';
+import '../../../core/error/firebase_auth_exceptions.dart';
 import '../../../core/utils/enums.dart';
 import '../model/user_model.dart';
 import '../repos/auth_repo.dart';
@@ -62,7 +62,7 @@ class AuthCubit extends Cubit<AuthState> {
 
       emit(AuthSuccess());
     } on FirebaseAuthException catch (error) {
-      String errorMsg = getExceptionMsg(error);
+      String errorMsg = handleAuthException(error);
       emit(AuthFailure(errorMsg));
     } catch (error) {
       emit(AuthFailure(error.toString()));

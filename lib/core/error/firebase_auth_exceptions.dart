@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-String getExceptionMsg(FirebaseException error) {
+String handleAuthException(FirebaseException error) {
   switch (error.code) {
     case "invalid-email":
       return "Your email address is not valid";
