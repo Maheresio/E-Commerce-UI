@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:e_commerce_app/core/helpers/custom_snack_bar.dart';
-import 'package:e_commerce_app/features/home/manager/product_provider.dart';
+import '../../../../core/helpers/custom_snack_bar.dart';
+import '../../manager/product_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/utils/app_strings.dart';

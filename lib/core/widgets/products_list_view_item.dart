@@ -1,16 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:provider/provider.dart';
-
-import '../../features/home/manager/product_provider.dart';
-import '../utils/app_routes.dart';
-import 'custom_favorite.dart';
-import 'custom_rating_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
+import '../../features/home/manager/product_provider.dart';
 import '../../features/home/model/product_model.dart';
 import '../global/themes/app_colors/app_colors_light.dart';
+import '../utils/app_routes.dart';
+import 'custom_favorite.dart';
+import 'custom_rating_bar.dart';
 
 class ProductsListViewItem extends StatelessWidget {
   const ProductsListViewItem(this.product, {super.key});

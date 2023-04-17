@@ -1,20 +1,13 @@
-import 'package:e_commerce_app/features/home/manager/product_provider.dart';
-import 'package:provider/provider.dart';
 
-import '../../features/home/model/product_model.dart';
-import '../../features/home/view/product_detail_view.dart';
-
-import '../../bottom_nav_bar.dart';
-import '../helpers/custom_transition_page.dart';
-import 'service_locator.dart';
-import '../../features/auth/manager/auth_cubit.dart';
-import '../../features/auth/repos/auth_repo_imp.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../features/auth/views/auth_view.dart';
-import '../../features/splash/view/splash_view.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../bottom_nav_bar.dart';
+import '../../features/auth/views/auth_view.dart';
+import '../../features/home/model/product_model.dart';
+import '../../features/home/view/product_detail_view.dart';
+import '../../features/splash/view/splash_view.dart';
+import '../helpers/custom_transition_page.dart';
 
 abstract class AppRoutes {
   static const kAuthViewRoute = '/authView';

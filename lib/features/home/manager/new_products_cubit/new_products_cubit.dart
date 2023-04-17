@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:e_commerce_app/core/utils/service_locator.dart';
-import 'package:e_commerce_app/features/home/model/product_model.dart';
-import 'package:e_commerce_app/features/home/repo/home_repo_imp.dart';
+import '../../../../core/utils/service_locator.dart';
+import '../../model/product_model.dart';
+import '../../repo/home_repo_imp.dart';
 import 'package:meta/meta.dart';
 
 import '../../../../core/error/firebase_firestore_exceptions.dart';

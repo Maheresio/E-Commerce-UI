@@ -1,5 +1,5 @@
-import 'package:e_commerce_app/core/helpers/custom_snack_bar.dart';
-import 'package:e_commerce_app/core/helpers/custom_status_bar.dart';
+import '../../../../core/helpers/custom_snack_bar.dart';
+import '../../../../core/helpers/custom_status_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/global/themes/app_colors/app_colors_light.dart';

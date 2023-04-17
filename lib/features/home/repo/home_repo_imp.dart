@@ -1,5 +1,5 @@
-import 'package:e_commerce_app/core/utils/firebase_api_paths.dart';
-import 'package:e_commerce_app/features/cart/model/product_cart_model.dart';
+import '../../../core/utils/firebase_api_paths.dart';
+import '../../cart/model/product_cart_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/utils/firebase_service.dart';

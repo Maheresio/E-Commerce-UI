@@ -1,10 +1,10 @@
-import 'package:e_commerce_app/core/utils/firebase_api_paths.dart';
-import 'package:e_commerce_app/core/utils/firebase_service.dart';
-import 'package:e_commerce_app/core/utils/service_locator.dart';
-import 'package:e_commerce_app/features/auth/model/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../core/utils/firebase_api_paths.dart';
+import '../../../core/utils/firebase_service.dart';
+import '../../../core/utils/service_locator.dart';
+import '../model/user_model.dart';
 import 'auth_repo.dart';
 
 final _fireServices = getIt.get<FirebaseServices>();

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:e_commerce_app/core/utils/service_locator.dart';
-import 'package:e_commerce_app/features/cart/model/product_cart_model.dart';
-import 'package:e_commerce_app/features/home/repo/home_repo_imp.dart';
+import '../../../core/utils/service_locator.dart';
+import '../../cart/model/product_cart_model.dart';
+import '../repo/home_repo_imp.dart';
 
 class ProductProvider with ChangeNotifier {
   final _homeRepo = getIt.get<HomeRepoImp>();

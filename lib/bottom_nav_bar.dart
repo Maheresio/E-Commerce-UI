@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/features/home/manager/product_provider.dart';
+import 'features/home/manager/product_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'features/cart/view/cart_view.dart';

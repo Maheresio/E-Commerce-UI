@@ -1,5 +1,6 @@
-import '../../../../core/global/themes/app_colors/app_colors_light.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../core/global/themes/app_colors/app_colors_light.dart';
 
 class CustomProfileListViewItem extends StatelessWidget {
   const CustomProfileListViewItem(
