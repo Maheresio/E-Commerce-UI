@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce_app/core/helpers/custom_snack_bar.dart';
 import 'package:e_commerce_app/features/home/manager/product_provider.dart';
 import 'package:provider/provider.dart';
@@ -35,7 +36,10 @@ class _ProductDetailViewBodyState extends State<ProductDetailViewBody> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.network(widget.product.imageUrl),
+            CachedNetworkImage(
+              imageUrl: widget.product.imageUrl,
+              errorWidget: (context, url, error) => const Icon(Icons.error),
+            ),
             SizedBox(
               height: 12.h,
             ),
@@ -72,15 +76,15 @@ class _ProductDetailViewBodyState extends State<ProductDetailViewBody> {
                         widget.product.category,
                         style: Theme.of(context)
                             .textTheme
-                            .headlineSmall
-                            !.copyWith(fontWeight: FontWeight.w600),
+                            .headlineSmall!
+                            .copyWith(fontWeight: FontWeight.w600),
                       ),
                       Text(
                         '\$${widget.product.price}',
                         style: Theme.of(context)
                             .textTheme
-                            .headlineSmall
-                            !.copyWith(fontWeight: FontWeight.w600),
+                            .headlineSmall!
+                            .copyWith(fontWeight: FontWeight.w600),
                       ),
                     ],
                   ),

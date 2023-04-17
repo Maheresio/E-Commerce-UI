@@ -1,3 +1,5 @@
+import 'package:cached_network_image/cached_network_image.dart';
+
 import '../../../../core/utils/app_strings.dart';
 import 'custom_cart_counter_icon.dart';
 import 'custom_cart_rich_text.dart';
@@ -26,8 +28,11 @@ class CartListViewItem extends StatelessWidget {
               borderRadius: const BorderRadiusDirectional.only(
                   bottomStart: Radius.circular(8),
                   topStart: Radius.circular(8)),
-              child: Image.network(
-                  'https://ae01.alicdn.com/kf/HTB1zsfoadfvK1RjSspfq6zzXFXa5/Vneck.jpg'),
+              child: CachedNetworkImage(
+                imageUrl:
+                    'https://ae01.alicdn.com/kf/HTB1zsfoadfvK1RjSspfq6zzXFXa5/Vneck.jpg',
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+              ),
             ),
             Expanded(
               child: Padding(

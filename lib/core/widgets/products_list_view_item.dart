@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:provider/provider.dart';
 
 import '../../features/home/manager/product_provider.dart';
@@ -38,7 +39,7 @@ class ProductsListViewItem extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
                       image: DecorationImage(
-                          image: NetworkImage(
+                          image: CachedNetworkImageProvider(
                             product.imageUrl,
                           ),
                           fit: BoxFit.cover),
@@ -61,8 +62,8 @@ class ProductsListViewItem extends StatelessWidget {
                             '${product.discountValue}%',
                             style: Theme.of(context)
                                 .textTheme
-                                .bodyMedium
-                                !.copyWith(
+                                .bodyMedium!
+                                .copyWith(
                                   fontWeight: FontWeight.w600,
                                 ),
                           ),
