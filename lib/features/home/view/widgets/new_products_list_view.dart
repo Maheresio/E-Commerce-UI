@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/global/themes/app_colors/app_colors_light.dart';
+import '../../../../core/helpers/custom_snack_bar.dart';
 import '../../../../core/widgets/custom_progress_indicator.dart';
 import '../../../../core/widgets/products_list_view_item.dart';
 
@@ -15,7 +16,7 @@ class NewProductsListView extends StatelessWidget {
     return SizedBox(
       height: 285.h,
       width: double.infinity,
-      child: BlocBuilder<NewProductsCubit, NewProductsState>(
+      child: BlocConsumer<NewProductsCubit, NewProductsState>(
         builder: (context, state) {
           if (state is NewProductsFailure) {
             return Center(
@@ -42,6 +43,11 @@ class NewProductsListView extends StatelessWidget {
           }
 
           return const CustomProgressIndicator();
+        },
+        listener: (context, state) {
+          if (state is NewProductsFailure) {
+            customSnackBar(context, state.errorMsg);
+          }
         },
       ),
     );

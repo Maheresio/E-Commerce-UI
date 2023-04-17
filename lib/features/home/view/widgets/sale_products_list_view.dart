@@ -1,3 +1,5 @@
+import 'package:e_commerce_app/core/helpers/custom_snack_bar.dart';
+import 'package:e_commerce_app/core/helpers/custom_status_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/global/themes/app_colors/app_colors_light.dart';
@@ -17,7 +19,7 @@ class SaleProductsListView extends StatelessWidget {
     return SizedBox(
       height: 285.h,
       width: double.infinity,
-      child: BlocBuilder<SaleProductsCubit, SaleProductsState>(
+      child: BlocConsumer<SaleProductsCubit, SaleProductsState>(
         builder: (context, state) {
           if (state is SaleProductsFailure) {
             return Center(
@@ -43,6 +45,11 @@ class SaleProductsListView extends StatelessWidget {
             );
           }
           return const CustomProgressIndicator();
+        },
+        listener: (context, state) {
+          if (state is SaleProductsFailure) {
+            customSnackBar(context, state.errorMsg);
+          }
         },
       ),
     );
