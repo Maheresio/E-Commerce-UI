@@ -1,3 +1,5 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:e_commerce_app/core/widgets/internet_not_connected.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,10 +19,21 @@ void main() async {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, _) {
-        return MaterialApp.router(
-          routerConfig: AppRoutes.router,
-          debugShowCheckedModeBanner: false,
-          theme: getThemeDataLight(context),
+        return StreamBuilder(
+          stream: Connectivity().onConnectivityChanged,
+          builder: (context, AsyncSnapshot<ConnectivityResult> snapshot) {
+            return snapshot.data == ConnectivityResult.mobile ||
+                    snapshot.data == ConnectivityResult.wifi
+                ? MaterialApp.router(
+                    routerConfig: AppRoutes.router,
+                    debugShowCheckedModeBanner: false,
+                    theme: getThemeDataLight(context),
+                  )
+                : const MaterialApp(
+                    home: InternetNotConnected(),
+                    debugShowCheckedModeBanner: false,
+                  );
+          },
         );
       },
     ),
