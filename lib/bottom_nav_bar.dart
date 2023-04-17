@@ -78,8 +78,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
         child: const HomeView(),
       ),
       const CartView(),
-      Container(),
-      Container(),
+      const HomeView(),
+      const HomeView(),
       const ProfileView(),
     ];
   }
