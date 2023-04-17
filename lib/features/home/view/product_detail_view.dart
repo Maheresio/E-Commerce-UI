@@ -14,25 +14,27 @@ class ProductDetailView extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => ProductProvider(),
       child: Scaffold(
-        appBar: AppBar(
-          title: Text(product.title),
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back_ios),
-            onPressed: () => GoRouter.of(context).pop(),
-          ),
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.share,
-              ),
-            )
-          ],
-        ),
-        body: ProductDetailViewBody(
-          product: product,
-        ),
+        appBar: _appBar(context),
+        body: ProductDetailViewBody(product: product),
       ),
+    );
+  }
+
+  AppBar _appBar(BuildContext context) {
+    return AppBar(
+      title: Text(product.title),
+      leading: IconButton(
+        icon: const Icon(Icons.arrow_back_ios),
+        onPressed: () => GoRouter.of(context).pop(),
+      ),
+      actions: [
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(
+            Icons.share,
+          ),
+        )
+      ],
     );
   }
 }

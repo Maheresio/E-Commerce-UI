@@ -40,7 +40,7 @@ class AuthRepoImp implements AuthRepo {
   @override
   Future<void> setUserData(UserModel user) async {
     await _fireServices.setData(
-      documentPath: FirebaseApiPaths.users(user.uid),
+      documentPath: FirebaseApiPaths.usersPaht(user.uid),
       data: user.toMap(),
     );
   }

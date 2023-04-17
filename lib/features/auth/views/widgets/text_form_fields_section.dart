@@ -7,8 +7,8 @@ import '../../../../core/utils/enums.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
 import '../../manager/auth_cubit.dart';
 
-class BuildTextFormFields extends StatelessWidget {
-  const BuildTextFormFields(
+class TextFormFieldsSection extends StatelessWidget {
+  const TextFormFieldsSection(
       {super.key,
       required this.authFormType,
       required this.nameController,

@@ -1,6 +1,6 @@
 abstract class FirebaseApiPaths {
-  static String products() => 'products/';
-  static String users(String uid) => 'users/$uid';
-  static String addToCart(String uid, String cartId) =>
-      '${users(uid)}/cart/$cartId';
+  static String productsPath() => 'products/';
+  static String usersPaht(String uid) => 'users/$uid';
+  static String addToCartPath(String uid, String cartId) =>
+      '${usersPaht(uid)}/cart/$cartId';
 }

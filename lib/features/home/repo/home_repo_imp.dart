@@ -14,7 +14,7 @@ class HomeRepoImp implements HomeRepo {
   @override
   Stream<List<ProductModel>> getNewProducts() =>
       _fireServices.getCollectionStream(
-        collectionPath: FirebaseApiPaths.products(),
+        collectionPath: FirebaseApiPaths.productsPath(),
         builder: ((data, documentId) =>
             ProductModel.fromMap(data!, documentId)),
       );
@@ -22,7 +22,7 @@ class HomeRepoImp implements HomeRepo {
   @override
   Stream<List<ProductModel>> getSaleProducts() =>
       _fireServices.getCollectionStream(
-        collectionPath: FirebaseApiPaths.products(),
+        collectionPath: FirebaseApiPaths.productsPath(),
         builder: ((data, documentId) =>
             ProductModel.fromMap(data!, documentId)),
         queryBuilder: (query) => query.where('discountValue', isNotEqualTo: 0),
@@ -35,7 +35,7 @@ class HomeRepoImp implements HomeRepo {
 
     await _fireServices.setData(
       documentPath:
-          FirebaseApiPaths.addToCart(uid, DateTime.now().toIso8601String()),
+          FirebaseApiPaths.addToCartPath(uid, DateTime.now().toIso8601String()),
       data: product.toMap(),
     );
   }

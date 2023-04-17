@@ -14,7 +14,7 @@ import '../../../../core/widgets/custom_text.dart';
 import '../../../../core/widgets/custom_text_button.dart';
 import '../../../../core/widgets/text_action_button.dart';
 import '../../manager/auth_cubit.dart';
-import 'build_text_form_fields.dart';
+import 'text_form_fields_section.dart';
 
 class AuthViewBody extends StatefulWidget {
   const AuthViewBody({super.key});
@@ -62,7 +62,7 @@ class _AuthViewBodyState extends State<AuthViewBody> {
               SizedBox(
                 height: 73.h,
               ),
-              BuildTextFormFields(
+              TextFormFieldsSection(
                 authFormType: authCubit.authFormType,
                 emailController: _emailController,
                 nameController: _nameController,

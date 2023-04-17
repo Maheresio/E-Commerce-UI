@@ -1,6 +1,3 @@
-import 'features/home/manager/product_provider.dart';
-import 'package:provider/provider.dart';
-
 import 'features/cart/view/cart_view.dart';
 
 import 'core/global/themes/app_colors/app_colors_light.dart';
@@ -41,13 +38,11 @@ class _BottomNavBarState extends State<BottomNavBar> {
         screens: _buildScreens(),
         items: _navBarsItems(),
         confineInSafeArea: true,
-        backgroundColor: Colors.white, // Default is Colors.white.
-        handleAndroidBackButtonPress: true, // Default is true.
-        resizeToAvoidBottomInset:
-            true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
-        stateManagement: true, // Default is true.
-        hideNavigationBarWhenKeyboardShows:
-            true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
+        backgroundColor: Colors.white,
+        handleAndroidBackButtonPress: true,
+        resizeToAvoidBottomInset: true,
+        stateManagement: true,
+        hideNavigationBarWhenKeyboardShows: true,
         decoration: NavBarDecoration(
           borderRadius: BorderRadius.circular(10.0),
           colorBehindNavBar: Colors.white,
@@ -55,31 +50,25 @@ class _BottomNavBarState extends State<BottomNavBar> {
         popAllScreensOnTapOfSelectedTab: true,
         popActionScreens: PopActionScreensType.all,
         itemAnimationProperties: const ItemAnimationProperties(
-          // Navigation Bar's items animation properties.
           duration: Duration(milliseconds: 200),
           curve: Curves.ease,
         ),
         screenTransitionAnimation: const ScreenTransitionAnimation(
-          // Screen transition animation on change of selected tab.
           animateTabTransition: true,
           curve: Curves.ease,
           duration: Duration(milliseconds: 200),
         ),
-        navBarStyle:
-            NavBarStyle.style1, // Choose the nav bar style with this property.
+        navBarStyle: NavBarStyle.style1,
       ),
     );
   }
 
   List<Widget> _buildScreens() {
     return [
-      ChangeNotifierProvider(
-        create: (context) => ProductProvider(),
-        child: const HomeView(),
-      ),
+      const HomeView(),
       const CartView(),
-      const HomeView(),
-      const HomeView(),
+      const SizedBox(),
+      const SizedBox(),
       const ProfileView(),
     ];
   }

@@ -1,3 +1,5 @@
+import 'package:cached_network_image/cached_network_image.dart';
+
 import '../../../../core/global/themes/app_colors/app_colors_light.dart';
 import '../../../../core/utils/app_strings.dart';
 import 'custom_profile_list_view.dart';
@@ -39,8 +41,9 @@ class ProfileViewBody extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CircleAvatar(
-                  backgroundImage: const NetworkImage(
-                      'https://joyfullystyled.com/wp-content/uploads/2020/02/pink-hat.jpg'),
+                  backgroundImage: const CachedNetworkImageProvider(
+                    'https://joyfullystyled.com/wp-content/uploads/2020/02/pink-hat.jpg',
+                  ),
                   radius: 35.w,
                 ),
                 SizedBox(
