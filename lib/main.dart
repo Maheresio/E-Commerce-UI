@@ -24,10 +24,13 @@ void main() async {
           builder: (context, AsyncSnapshot<ConnectivityResult> snapshot) {
             return snapshot.data == ConnectivityResult.mobile ||
                     snapshot.data == ConnectivityResult.wifi
-                ? MaterialApp.router(
-                    routerConfig: AppRoutes.router,
-                    debugShowCheckedModeBanner: false,
-                    theme: getThemeDataLight(context),
+                ? GestureDetector(
+                    onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+                    child: MaterialApp.router(
+                      routerConfig: AppRoutes.router,
+                      debugShowCheckedModeBanner: false,
+                      theme: getThemeDataLight(context),
+                    ),
                   )
                 : const MaterialApp(
                     home: InternetNotConnected(),

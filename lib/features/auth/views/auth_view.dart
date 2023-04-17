@@ -13,12 +13,9 @@ class AuthView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
             create: (context) => AuthCubit(authRepo: getIt.get<AuthRepoImp>()),
-      child: GestureDetector(
-        onTap: () => FocusScope.of(context).unfocus(),
-        child: const Scaffold(
-          resizeToAvoidBottomInset: false,
-          body: AuthViewBody(),
-        ),
+      child: const Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: AuthViewBody(),
       ),
     );
   }
