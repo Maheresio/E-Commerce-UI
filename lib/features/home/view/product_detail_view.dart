@@ -1,3 +1,6 @@
+import 'package:provider/provider.dart';
+
+import '../manager/product_provider.dart';
 import '../model/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -9,23 +12,28 @@ class ProductDetailView extends StatelessWidget {
   final ProductModel product;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(product.title),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios),
-          onPressed: () => GoRouter.of(context).pop(),
+    return ChangeNotifierProvider(
+      create: (context) => ProductProvider(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(product.title),
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back_ios),
+            onPressed: () => GoRouter.of(context).pop(),
+          ),
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.share,
+              ),
+            )
+          ],
         ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.share,
-            ),
-          )
-        ],
+        body: ProductDetailViewBody(
+          product: product,
+        ),
       ),
-      body:  ProductDetailViewBody(product: product,),
     );
   }
 }

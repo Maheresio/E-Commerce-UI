@@ -12,6 +12,7 @@ class HomeViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
       child: Column(
         children: [
           Stack(
@@ -43,13 +44,13 @@ class HomeViewBody extends StatelessWidget {
                 FeaturedListView(
                   title: AppStrings.kSaleTitle,
                   subtitle: AppStrings.kSaleSubtitle,
-                  listView:  const SaleProductsListView(),
+                  listView: const SaleProductsListView(),
                   onPressed: () {},
                 ),
                 FeaturedListView(
                   title: AppStrings.kNewTitle,
                   subtitle: AppStrings.kNewSubtitle,
-                  listView:  const NewProductsListView(),
+                  listView: const NewProductsListView(),
                   onPressed: () {},
                 ),
               ],
