@@ -10,25 +10,19 @@ import 'core/utils/service_locator.dart';
 void main() async {
   await firebaseInit();
   customStatusBar();
- setupServiceLocator();
-  runApp(const HomePage());
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ScreenUtilInit(
-        designSize: const Size(375, 812),
-        minTextAdapt: true,
-        splitScreenMode: true,
-        builder: (context, _) {
-          return MaterialApp.router(
-            routerConfig: AppRoutes.router,
-            debugShowCheckedModeBanner: false,
-            theme: getThemeDataLight(context),
-          );
-        });
-  }
+  setupServiceLocator();
+  runApp(
+    ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, _) {
+        return MaterialApp.router(
+          routerConfig: AppRoutes.router,
+          debugShowCheckedModeBanner: false,
+          theme: getThemeDataLight(context),
+        );
+      },
+    ),
+  );
 }
